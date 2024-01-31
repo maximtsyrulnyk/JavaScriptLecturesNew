@@ -32,17 +32,17 @@
 
 // console.log(typeof p);
 
-const a = 1 - 2 - 2 - 2 - 2 + 2;
-const b = `'Test Hello World`;
-const c = 1 - "10";
-const d = "10" ** 1;
-const e = 10 / "10";
-let f = "5" ** "4";
-let g = 6 % 7;
-// console.log(f, g);
-// f = g-- + 1;
-// console.log(f, g);
+// const a = 1 - 2 - 2 - 2 - 2 + 2;
+// const b = `'Test Hello World`;
+// const c = 1 - "10";
+// const d = "10" ** 1;
+// const e = 10 / "10";
+// let f = "5" ** "4";
+// let g = 6 % 7;
+// // console.log(f, g);
+// // f = g-- + 1;
+// // console.log(f, g);
+// // console.log(f);
+// f = 5;
+// f %= 2;
 // console.log(f);
-f = 5;
-f %= 2;
-console.log(f);
