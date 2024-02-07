@@ -309,17 +309,147 @@ let rest = 10;
 //     }
 // }
 
-table: for(let i=1; i < 10; i++) {
-    if(i === 1) {
-        continue;
-    }
-    console.log(`Число ${i} ==============`);
-    for(let j=1; j <10; j++) {
-        if(j === 1) {
-            continue;
-        }
-        console.log(`${i} * ${j} = ${i*j }`);
+// table: for(let i=1; i < 10; i++) {
+//     if(i === 1) {
+//         continue;
+//     }
+//     console.log(`Число ${i} ==============`);
+//     for(let j=1; j <10; j++) {
+//         if(j === 1) {
+//             continue;
+//         }
+//         console.log(`${i} * ${j} = ${i*j }`);
 
         
+//     }
+// }
+
+// FUNCTIONS
+// function calcSpace(amount, unit = "px"){
+
+//     return `${amount*4}${unit}`;
+// }
+
+function playTrackById(trackId) {
+    /// отримати файл пісні і її запустити
+}
+function stopTrackById(trackId) {
+    /// отримати файл пісні і поставити її на паузу
+    console.log(`отримати файл пісні з ID ${trackId} і поставити її на паузу`);
+}
+function play(trackName, trackId) {
+    console.log(`Запускаємо ${trackName}`);
+
+    playTrackById(trackId);
+}
+
+function end(oldTrackName, newTrackName) {
+    console.log(`Завершили грати ${oldTrackName}`);
+    console.log(`Наступний трек ${newTrackName}`);
+}
+
+function pausePlay(currentTrackName) {
+    console.log(`Трек ${currentTrackName} на паузі`);
+
+    reloadDataTrack();
+
+    play();
+}
+
+// function reloadDataTrack (amount) {
+//     if(amount <= 0) {
+//         console.log('Дані оновлені вказану кількість разів');
+//     } else {
+//         console.log('Повторне оновлення');
+//         //певний код для оновлення даних
+//         reloadDataTrack(amount -1);
+//     }
+// }
+// reloadDataTrack(5);
+
+function pauseStopByTrack(trackName, trackId) {
+    let isPause = null;
+    return () => {
+       if(isPause == true) {
+        return;
+       }
+    stopTrackById(trackId);
+    console.log(`Трек ${trackName} на паузі`);
+    isPause = true;
+};
+}
+
+
+const pauseStop456 = pauseStopByTrack('IT - Console log', 10);
+
+pauseStop456();
+
+// const runCommand = function(command, erorrFn) {
+//     const result = command();
+//     if(!result) {
+//         return erorrFn()
+//     }
+// }
+
+// runCommand(()=>{
+//     console.log('Запуск команди');
+
+//     return 1 - 1;
+// }, ()=>{
+//     console.log("Помилка");
+// });
+
+// const testFunc = () => {
+//     console.log(test);
+//     let test = 10;
+
+//     return test;
+// };
+
+// console.log(testFunc());
+
+const memoCalcSpace = (oldAmount = null, oldUnit = null, oldResult = null) => {
+
+    return(amount, unit = "px") =>{
+        if(oldAmount === amount &&  unit=== oldUnit) {
+            console.log("Memo");
+            return oldResult;
+        }
+
+        oldResult = `${amount*4}${unit}`;
+        oldAmount = amount;
+        oldUnit = unit;
+
+        return oldResult;
+    };
+};
+
+const calcSpace = memoCalcSpace();
+console.log(calcSpace(4));
+console.log(calcSpace(4));
+
+const getSpaceFromDesign = (componentName) => {
+    switch (componentName) {
+        case 'button':
+            return 4;
+        case 'card':
+            return 3;
+        default:
+            return 2;
     }
 }
+
+const isMobile = true;
+
+const amount = getSpaceFromDesign('button');
+const amountMobile = isMobile ? amount / 2: amount;
+const amountInPx = calcSpace(amountMobile);
+
+const calcSpaceFromDesign = (componentName) => {
+    const result = getSpaceFromDesign(componentName);
+    return calcSpace(isMobile ? result / 2: result);
+}
+
+console.log('//////');
+
+console.log(calcSpaceFromDesign('button'));
