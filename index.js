@@ -226,9 +226,9 @@
 // let start = 40;
 // let goal = 100;
 
-let step = 0;
-let set = 8;
-let rest = 10;
+// let step = 0;
+// let set = 8;
+// let rest = 10;
 
 // do {
 //     if(step === 0) {
@@ -330,31 +330,31 @@ let rest = 10;
 //     return `${amount*4}${unit}`;
 // }
 
-function playTrackById(trackId) {
-    /// отримати файл пісні і її запустити
-}
-function stopTrackById(trackId) {
-    /// отримати файл пісні і поставити її на паузу
-    console.log(`отримати файл пісні з ID ${trackId} і поставити її на паузу`);
-}
-function play(trackName, trackId) {
-    console.log(`Запускаємо ${trackName}`);
+// function playTrackById(trackId) {
+//     /// отримати файл пісні і її запустити
+// }
+// function stopTrackById(trackId) {
+//     /// отримати файл пісні і поставити її на паузу
+//     console.log(`отримати файл пісні з ID ${trackId} і поставити її на паузу`);
+// }
+// function play(trackName, trackId) {
+//     console.log(`Запускаємо ${trackName}`);
 
-    playTrackById(trackId);
-}
+//     playTrackById(trackId);
+// }
 
-function end(oldTrackName, newTrackName) {
-    console.log(`Завершили грати ${oldTrackName}`);
-    console.log(`Наступний трек ${newTrackName}`);
-}
+// function end(oldTrackName, newTrackName) {
+//     console.log(`Завершили грати ${oldTrackName}`);
+//     console.log(`Наступний трек ${newTrackName}`);
+// }
 
-function pausePlay(currentTrackName) {
-    console.log(`Трек ${currentTrackName} на паузі`);
+// function pausePlay(currentTrackName) {
+//     console.log(`Трек ${currentTrackName} на паузі`);
 
-    reloadDataTrack();
+//     reloadDataTrack();
 
-    play();
-}
+//     play();
+// }
 
 // function reloadDataTrack (amount) {
 //     if(amount <= 0) {
@@ -367,22 +367,22 @@ function pausePlay(currentTrackName) {
 // }
 // reloadDataTrack(5);
 
-function pauseStopByTrack(trackName, trackId) {
-    let isPause = null;
-    return () => {
-       if(isPause == true) {
-        return;
-       }
-    stopTrackById(trackId);
-    console.log(`Трек ${trackName} на паузі`);
-    isPause = true;
-};
-}
+// function pauseStopByTrack(trackName, trackId) {
+//     let isPause = null;
+//     return () => {
+//        if(isPause == true) {
+//         return;
+//        }
+//     stopTrackById(trackId);
+//     console.log(`Трек ${trackName} на паузі`);
+//     isPause = true;
+// };
+// }
 
 
-const pauseStop456 = pauseStopByTrack('IT - Console log', 10);
+// const pauseStop456 = pauseStopByTrack('IT - Console log', 10);
 
-pauseStop456();
+// pauseStop456();
 
 // const runCommand = function(command, erorrFn) {
 //     const result = command();
@@ -408,48 +408,89 @@ pauseStop456();
 
 // console.log(testFunc());
 
-const memoCalcSpace = (oldAmount = null, oldUnit = null, oldResult = null) => {
+// const memoCalcSpace = (oldAmount = null, oldUnit = null, oldResult = null) => {
 
-    return(amount, unit = "px") =>{
-        if(oldAmount === amount &&  unit=== oldUnit) {
-            console.log("Memo");
-            return oldResult;
-        }
+//     return(amount, unit = "px") =>{
+//         if(oldAmount === amount &&  unit=== oldUnit) {
+//             console.log("Memo");
+//             return oldResult;
+//         }
 
-        oldResult = `${amount*4}${unit}`;
-        oldAmount = amount;
-        oldUnit = unit;
+//         oldResult = `${amount*4}${unit}`;
+//         oldAmount = amount;
+//         oldUnit = unit;
 
-        return oldResult;
-    };
-};
+//         return oldResult;
+//     };
+// };
 
-const calcSpace = memoCalcSpace();
-console.log(calcSpace(4));
-console.log(calcSpace(4));
+// const calcSpace = memoCalcSpace();
+// console.log(calcSpace(4));
+// console.log(calcSpace(4));
 
-const getSpaceFromDesign = (componentName) => {
-    switch (componentName) {
-        case 'button':
-            return 4;
-        case 'card':
-            return 3;
-        default:
-            return 2;
+// const getSpaceFromDesign = (componentName) => {
+//     switch (componentName) {
+//         case 'button':
+//             return 4;
+//         case 'card':
+//             return 3;
+//         default:
+//             return 2;
+//     }
+// }
+
+// const isMobile = true;
+
+// const amount = getSpaceFromDesign('button');
+// const amountMobile = isMobile ? amount / 2: amount;
+// const amountInPx = calcSpace(amountMobile);
+
+// const calcSpaceFromDesign = (componentName) => {
+//     const result = getSpaceFromDesign(componentName);
+//     return calcSpace(isMobile ? result / 2: result);
+// }
+
+// console.log('//////');
+
+// console.log(calcSpaceFromDesign('button'));
+
+// Built-in global functions lesson
+// const code = `console.log("Hello")`;
+// eval(code);
+function calcScreenRation(w, h) {
+    w = parseFloat(w);
+    h = parseFloat(h);
+    let result = w / h;
+    if(isNaN(result)) {
+        return 'Error';
+    } else if(!isFinite(result)) {
+        return 'Is Infinity';
+    } else {
+        return result;
     }
 }
+console.log(calcScreenRation('1920.5px', '1000.5px'));
 
-const isMobile = true;
-
-const amount = getSpaceFromDesign('button');
-const amountMobile = isMobile ? amount / 2: amount;
-const amountInPx = calcSpace(amountMobile);
-
-const calcSpaceFromDesign = (componentName) => {
-    const result = getSpaceFromDesign(componentName);
-    return calcSpace(isMobile ? result / 2: result);
+const num = parseFloat("1.5555");
+console.log(num);
+const domain = 'it-brains.com.ua';
+function redirectToPath (path) {
+    path = encodeURI(path);
+    const link = encodeURI(`https://${domain}/${path}`);
+    // робимо переход на сторінку
+    console.log(link);
+    return link;
 }
+const URI = 'https://it-brains.com.ua/product/%25D0%259C%25D1%2596%25D0%25BA%25D1%2580%25D0%25BE%25D1%2584%25D0%25BE%25D0%25BD%2520%25D1%2580%25D0%25BE%25D0%25B6%25D0%25B5%25D0%25B2%25D0%25B8%25D0%25B9/info';
+function getURL(urlInURI) {
+    urlInURI = decodeURI(urlInURI);
+    console.log(urlInURI);
+    return urlInURI;
 
-console.log('//////');
+}
+const path = 'product/Мікрофон рожевий/info';
+const link = `https://${domain}/${path}`;
 
-console.log(calcSpaceFromDesign('button'));
+const link1 = redirectToPath(path); // URI
+const link2 = getURL(link1); // Decode URI
+console.log(link === link2);
