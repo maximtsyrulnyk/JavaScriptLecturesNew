@@ -457,40 +457,92 @@
 // Built-in global functions lesson
 // const code = `console.log("Hello")`;
 // eval(code);
-function calcScreenRation(w, h) {
-    w = parseFloat(w);
-    h = parseFloat(h);
-    let result = w / h;
-    if(isNaN(result)) {
-        return 'Error';
-    } else if(!isFinite(result)) {
-        return 'Is Infinity';
-    } else {
-        return result;
-    }
-}
-console.log(calcScreenRation('1920.5px', '1000.5px'));
+// function calcScreenRation(w, h) {
+//     w = parseFloat(w);
+//     h = parseFloat(h);
+//     let result = w / h;
+//     if(isNaN(result)) {
+//         return 'Error';
+//     } else if(!isFinite(result)) {
+//         return 'Is Infinity';
+//     } else {
+//         return result;
+//     }
+// }
+// console.log(calcScreenRation('1920.5px', '1000.5px'));
 
-const num = parseFloat("1.5555");
-console.log(num);
-const domain = 'it-brains.com.ua';
-function redirectToPath (path) {
-    path = encodeURI(path);
-    const link = encodeURI(`https://${domain}/${path}`);
-    // робимо переход на сторінку
-    console.log(link);
-    return link;
-}
-const URI = 'https://it-brains.com.ua/product/%25D0%259C%25D1%2596%25D0%25BA%25D1%2580%25D0%25BE%25D1%2584%25D0%25BE%25D0%25BD%2520%25D1%2580%25D0%25BE%25D0%25B6%25D0%25B5%25D0%25B2%25D0%25B8%25D0%25B9/info';
-function getURL(urlInURI) {
-    urlInURI = decodeURI(urlInURI);
-    console.log(urlInURI);
-    return urlInURI;
+// const num = parseFloat("1.5555");
+// console.log(num);
+// const domain = 'it-brains.com.ua';
+// function redirectToPath (path) {
+//     path = encodeURI(path);
+//     const link = encodeURI(`https://${domain}/${path}`);
+//     // робимо переход на сторінку
+//     console.log(link);
+//     return link;
+// }
+// const URI = 'https://it-brains.com.ua/product/%25D0%259C%25D1%2596%25D0%25BA%25D1%2580%25D0%25BE%25D1%2584%25D0%25BE%25D0%25BD%2520%25D1%2580%25D0%25BE%25D0%25B6%25D0%25B5%25D0%25B2%25D0%25B8%25D0%25B9/info';
+// function getURL(urlInURI) {
+//     urlInURI = decodeURI(urlInURI);
+//     console.log(urlInURI);
+//     return urlInURI;
 
-}
-const path = 'product/Мікрофон рожевий/info';
-const link = `https://${domain}/${path}`;
+// }
+// const path = 'product/Мікрофон рожевий/info';
+// const link = `https://${domain}/${path}`;
 
-const link1 = redirectToPath(path); // URI
-const link2 = getURL(link1); // Decode URI
-console.log(link === link2);
+// const link1 = redirectToPath(path); // URI
+// const link2 = getURL(link1); // Decode URI
+// console.log(link === link2);
+
+//Вбудовані можливості для числових типів
+// const a = 0.00051;
+// const b = 0.00052;
+// const c = 0.00103;
+
+// const d = a + b;
+// console.log(Number.MIN_SAFE_INTEGER);
+// console.log(Number.MAX_SAFE_INTEGER);
+// console.log(Number.MIN_VALUE);
+// console.log(Number.MAX_VALUE);
+// console.log(d - c < Number.MIN_VALUE && c - d < Number.EPSILON);
+// function reviewNumber(num) {
+//     // console.log(num);
+//     if(Number.isNaN(num)) {
+//         return console.log('Is not a Number', num);
+//     }
+//     if(!num && num !== 0) {
+//        return console.log('Bad number', num);
+//     }
+//     if(!Number.isInteger(num)) {
+//         return console.log('Дробове число', num);
+//     }
+//     if(!Number.isSafeInteger(num)) {
+//         return console.log('Небезпечне число', num);
+//     }
+//     return console.log(num);
+// }
+// reviewNumber(9007199254741004n);
+// const a1 =94567;
+// const a2 = a1.toExponential();
+// const a3 = parseFloat(a2);
+// const a4 = a3.toString();
+// console.log(a4);
+
+//Вбудовані можливості для рядкових типів
+const a = 'HeololoWorold';
+// console.log(a.length);
+// console.log(String.fromCodePoint(128515));
+const b = "Ļ";
+// console.log(b.codePointAt(0));
+// console.log(String.fromCodePoint(315));
+// console.log(String.raw`www.test.com/home\ncatalog/category\new`);
+// console.log(a.concat(" ", b, " ", "!"));
+// console.log(a.lastIndexOf('ol'));
+// console.log(a.endsWith('ol', 12));
+const c = "     HelloWold     ";
+// console.log(c.padStart(18, ' '));
+// console.log(c.slice(-5));
+// console.log(c.toUpperCase());
+// console.log(c.toLowerCase());
+console.log(c.trim(), "1");
