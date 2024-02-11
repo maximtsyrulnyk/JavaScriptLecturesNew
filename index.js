@@ -530,19 +530,79 @@
 // console.log(a4);
 
 //Вбудовані можливості для рядкових типів
-const a = 'HeololoWorold';
+// const a = 'HeololoWorold';
 // console.log(a.length);
 // console.log(String.fromCodePoint(128515));
-const b = "Ļ";
+// const b = "Ļ";
 // console.log(b.codePointAt(0));
 // console.log(String.fromCodePoint(315));
 // console.log(String.raw`www.test.com/home\ncatalog/category\new`);
 // console.log(a.concat(" ", b, " ", "!"));
 // console.log(a.lastIndexOf('ol'));
 // console.log(a.endsWith('ol', 12));
-const c = "     HelloWold     ";
+// const c = "     HelloWold     ";
 // console.log(c.padStart(18, ' '));
 // console.log(c.slice(-5));
 // console.log(c.toUpperCase());
 // console.log(c.toLowerCase());
-console.log(c.trim(), "1");
+// console.log(c.trim(), "1");
+
+//Просунутий тип даних: Масив
+// const a = 1;
+// const b = 2;
+// const c = 3;
+
+// const getOne = () => 1;
+
+// let list = [function Name() {}, 100, 'Text', null, undefined, 1+2, 5<6, getOne(), a, b, c];
+// // console.log(list);
+// const testArr = [];
+// testArr[0] = 'Start';
+// testArr[1] = 2;
+// testArr[2] = 20;
+// testArr[testArr.length] = 30;
+// testArr[testArr.length] = 40;
+// delete testArr[0];
+// console.log(testArr);
+const big = [[[1], [2, 3, 4, 5], [3]], [[2]], [[3]]];
+// console.log(big[0][1][2]);
+const location = [[100, 200], [105, 205], [110, 190,], [120, 180,]];
+// for(const pointIndex in location) {
+//     console.log(location[pointIndex]);
+//     for(const coordIndex in location[pointIndex]) {
+//         console.log(location[pointIndex][coordIndex]);
+//     }
+// }
+// for(let i=0; i < location.length; i++) {
+//     console.log(location[i]);
+//     for(let j=0; j < location[i].length; j++) {
+//         console.log(location[i][j]);
+//     }
+// }
+let l1 = [2,3,4];
+let l2 = [1, 2, 3];
+const l3 = [100, ...(l1 || [])];
+// const [loc1, ...rest] = location;
+// const [[p1,p2], loc3, loc4 = "Test"] = rest;
+// console.log(p1,p2);
+// console.log(l1.toString(), l2.toString());
+// console.log(l1, l3);
+// delete l1[0];
+// console.log(l1, l2);
+// [l1, l2] = [l2, l1];
+// console.log(l1,l2);
+function printFullName([name, surname, lastname, ...arg]) {
+    // console.log(arg);
+    // return arg.toString();
+    return `${name} ${surname} ${lastname} ${arg.length ? `(${arg.toString()})`: ""}`;
+}
+console.log(printFullName(['Ivan', 'Ivanenko', 'Ivanov', 'Admin', '18']));
+// function sumAllNum(...nums) {
+//     let sum = 0;
+//     for (const n of nums) {
+//         sum += n;
+//     }
+//     return [sum, nums.length];
+// }
+// const [sum, numLength] = sumAllNum(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16); 
+// console.log(sum, numLength);
