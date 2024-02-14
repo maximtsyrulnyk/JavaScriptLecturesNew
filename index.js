@@ -564,9 +564,9 @@
 // testArr[testArr.length] = 40;
 // delete testArr[0];
 // console.log(testArr);
-const big = [[[1], [2, 3, 4, 5], [3]], [[2]], [[3]]];
+// const big = [[[1], [2, 3, 4, 5], [3]], [[2]], [[3]]];
 // console.log(big[0][1][2]);
-const location = [[100, 200], [105, 205], [110, 190,], [120, 180,]];
+// const location = [[100, 200], [105, 205], [110, 190,], [120, 180,]];
 // for(const pointIndex in location) {
 //     console.log(location[pointIndex]);
 //     for(const coordIndex in location[pointIndex]) {
@@ -579,9 +579,9 @@ const location = [[100, 200], [105, 205], [110, 190,], [120, 180,]];
 //         console.log(location[i][j]);
 //     }
 // }
-let l1 = [2,3,4];
-let l2 = [1, 2, 3];
-const l3 = [100, ...(l1 || [])];
+// let l1 = [2,3,4];
+// let l2 = [1, 2, 3];
+// const l3 = [100, ...(l1 || [])];
 // const [loc1, ...rest] = location;
 // const [[p1,p2], loc3, loc4 = "Test"] = rest;
 // console.log(p1,p2);
@@ -591,12 +591,12 @@ const l3 = [100, ...(l1 || [])];
 // console.log(l1, l2);
 // [l1, l2] = [l2, l1];
 // console.log(l1,l2);
-function printFullName([name, surname, lastname, ...arg]) {
-    // console.log(arg);
-    // return arg.toString();
-    return `${name} ${surname} ${lastname} ${arg.length ? `(${arg.toString()})`: ""}`;
-}
-console.log(printFullName(['Ivan', 'Ivanenko', 'Ivanov', 'Admin', '18']));
+// function printFullName([name, surname, lastname, ...arg]) {
+//     // console.log(arg);
+//     // return arg.toString();
+//     return `${name} ${surname} ${lastname} ${arg.length ? `(${arg.toString()})`: ""}`;
+// }
+// console.log(printFullName(['Ivan', 'Ivanenko', 'Ivanov', 'Admin', '18']));
 // function sumAllNum(...nums) {
 //     let sum = 0;
 //     for (const n of nums) {
@@ -606,3 +606,93 @@ console.log(printFullName(['Ivan', 'Ivanenko', 'Ivanov', 'Admin', '18']));
 // }
 // const [sum, numLength] = sumAllNum(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16); 
 // console.log(sum, numLength);
+
+// Advanced data type: Object
+// const key = "key";
+// const a = {
+//     amount: 100,
+//     // [key]: 'HelloWorld',
+//     [key]: {
+//         [key]: 'Ivan',
+//         age: 35,
+//     },
+//     // [key]: "test",
+// };
+// console.log(a.del);
+// console.log(a[key]);
+// console.log(a.amount );
+
+// // const b = {};
+// // console.log(b);
+// delete a.amount;
+// console.log(a);
+// const role = {
+//     value: 'admin',
+//     status: 3,
+// }
+// const person = {
+//     name: "Іван",
+//     age: 25,
+//     occupation: "Розробник програмного забезпечення",
+//     info: role,
+//     address: {
+//         city: "Київ",
+//         // street: "Вулиця Шевченка", 
+//         houseNumber: 10,
+//     },
+//     getAddress: function() {
+//         return this.address;
+//     }
+// };
+// const person2 = {...person};
+// console.log("name" in person);
+// console.log(person.getAddress());
+// const { age, address: {city, street, zipcode = 41023}, ...rest} = person;
+// console.log(age, city, street, zipcode);
+// console.log(rest);
+
+// function getAddress({address}) {
+//     if(address) {
+//         const{
+//             city,
+//             street = "Не вказано",
+//             houseNumber, 
+//             zipcode = 1000,
+//         } = address;
+//         return `Ваша адреса: ${city} ${street} ${houseNumber} ${zipcode}`;
+//     }
+//     return `Нема даних`;
+// }
+// const c = [1,2,3]
+// const test = getAddress({city: "Kyiv"});
+// console.log(test);
+// for(const key in person) {
+//     const item = person[key];
+
+
+//     if(typeof person[key] === "object"){
+//         for(const key2 in item) {
+//             console.log(item[key2]);
+//         }
+//     }
+//     else {
+//         console.log(item);
+//     }
+// }
+// const a = [{test: 1}];
+// const b = a;
+
+// console.log(a === b);    
+Number.prototype.toOwnString = function() {
+    console.log(this);
+    return `Число: ${this}`;
+}
+const b = 1;
+const c = b.toOwnString();
+console.log(c);
+function Test() {
+    this.world = "World";
+    return "Hello" + this.world;
+}
+Test.hello = "Hello";
+console.log(Test.hello);
