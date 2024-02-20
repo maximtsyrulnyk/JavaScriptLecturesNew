@@ -787,8 +787,8 @@
 // );
 // console.log(Array.isArray(arr));
 
-let arr1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const arr2 = [-1, 4, 5, 4.6, 4.7, 5,6];
+// let arr1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const arr2 = [-1, 4, 5, 4.6, 4.7, 5,6];
 // const arr3 = arr1;
 
 // console.log(Array.of(...arr1, ...arr2));
@@ -853,4 +853,85 @@ const arr2 = [-1, 4, 5, 4.6, 4.7, 5,6];
 // console.log(sortedArr);
 // console.log(['Arabic', 'Info', 'Zero', 'City', 'Aar'].sort());
 
-console.log(arr2.every((elem, index, array)=>elem<0));
+// console.log(arr2.every((elem, index, array)=>elem<0));
+
+// Built-in capabilities for arrays Part2
+// const userList = [
+//     {id: 1, name: 'Dima', age: 19},
+//     {id: 54, name: 'Ivan', age: 35},
+//     {id: 6412, name: 'Anton', age: 41},
+// ];
+
+// let minAge = 30;
+
+// const userBigAge = userList.sort((user1, user2)=>{
+//     return user2.age - user1.age;
+// });
+
+// const userBigAge = userList.find(({age})=> age>=minAge);
+// const userBigAge = userList.findLastIndex(({age})=> age>=minAge);
+// console.log(userBigAge);
+// const iter = userList.values();
+// console.log(iter);
+// const result = iter.next();
+// console.log(result);
+// for(const elem of iter) {
+//     console.log(elem);
+// }
+
+//Built-in capabilities for Arrays part 2
+// const userList = [
+//     {id: 6412, name: 'Anton', age: 41, balance: 300 },
+//     {id: 1, name: 'Dima', age: 19, balance: 0}, 
+//     {id: 54, name: 'Ivan', age: 35, balance: 10200},
+// ];
+
+// const result = userList.map((user, index, array) =>{
+//     user.balanceLimit = 1000 - user.balance;
+//     if(user.balanceLimit < 0) {
+//         user.balanceLimit = 0;
+//     }
+//     return user;
+// });
+// console.log(result);
+
+const flatArray = [[[100, 105], [200, 205]], [[220, 230], [430, 455]]];
+
+// console.log(flatArray.flatMap((el) =>[...el, el[0]-el[1]]));
+const result = flatArray.flatMap((el)=>{return el.map((it)=>{return it[0]-it[1]}); 
+});
+console.log(result);
+result.forEach((elem, index, array) =>{console.log(elem);});
+// const result = userList.reduceRight((num, user, userIndex, array) =>{
+//     console.log(num, user.age);
+
+//     if(num > 100) return num;
+//     return user.age > num ? user.age: num;
+// }, 1);
+// console.log(result);
+// const totalBalance = userList.reduce((num, user)=>num + user.balance, 0);
+// console.log(totalBalance);
+
+// let minAge = 30;
+
+// const userBigAge = userList.sort((user1, user2) =>{
+//     return user2.age - user1.age;
+// });
+// const userBigAge = userList.find(({age}) => age>=minAge);
+// const userBigAge = userList.findLastIndex(({age}) => age>=minAge);
+// console.log(userBigAge);
+// const iter = userList.values();
+
+// console.log(iter);
+// const result = iter.next();
+// console.log(result);
+
+// for(const elem of iter) {
+//     console.log(elem);
+// }
+const arr = ['Apple', 'Hotdog', 'Bread', 'Milk'];
+// console.log(arr.join('... '));
+// const arrSmall = arr.splice(1, 0, ...userList);
+// const arrSmall = arr.slice(1,3);
+// console.log(arrSmall);
+// console.log(arr);
