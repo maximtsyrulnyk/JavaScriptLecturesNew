@@ -895,13 +895,13 @@
 // });
 // console.log(result);
 
-const flatArray = [[[100, 105], [200, 205]], [[220, 230], [430, 455]]];
+// const flatArray = [[[100, 105], [200, 205]], [[220, 230], [430, 455]]];
 
 // console.log(flatArray.flatMap((el) =>[...el, el[0]-el[1]]));
-const result = flatArray.flatMap((el)=>{return el.map((it)=>{return it[0]-it[1]}); 
-});
-console.log(result);
-result.forEach((elem, index, array) =>{console.log(elem);});
+// const result = flatArray.flatMap((el)=>{return el.map((it)=>{return it[0]-it[1]}); 
+// });
+// console.log(result);
+// result.forEach((elem, index, array) =>{console.log(elem);});
 // const result = userList.reduceRight((num, user, userIndex, array) =>{
 //     console.log(num, user.age);
 
@@ -929,9 +929,61 @@ result.forEach((elem, index, array) =>{console.log(elem);});
 // for(const elem of iter) {
 //     console.log(elem);
 // }
-const arr = ['Apple', 'Hotdog', 'Bread', 'Milk'];
+// const arr = ['Apple', 'Hotdog', 'Bread', 'Milk'];
 // console.log(arr.join('... '));
 // const arrSmall = arr.splice(1, 0, ...userList);
 // const arrSmall = arr.slice(1,3);
 // console.log(arrSmall);
 // console.log(arr);
+
+// Built-in capabilities for Objects
+// const article = {
+//     info: {    title: 'My article',
+//     description: 'This is info about article',
+// },
+//     id: 105423,
+//     categoryId: 1423,
+//     likeAmount: 442,
+// };
+// const ARTICLE_FIELD = {
+//     title: 'ID статті',
+//     description: 'Заголовок статті',
+// };
+// articlePhoto = {
+//     photoUrl: '...url',
+//     photoId: 100,
+//     photoType: 'big',
+// };
+
+// articleCommentList = {
+//     list: [{id: 4323, user: "Ivan", message: "Крутий контент"}],
+// };
+
+// Object.assign(article, articlePhoto, articleCommentList);
+
+// console.log(article);
+
+// console.log(Object.entries(article.info));
+
+// const formList = Object.entries(article.info);
+
+// const formListLayout = formList.map(([key, value])=>{
+//     return `<p> <strong> ${ARTICLE_FIELD[key]}</strong> <br> <span> ${value}</span></p>`;
+// });
+
+// console.log(formListLayout);
+
+// const objArr = [['id', 100432], ['title', 'My product name'], ['price', 1203]];
+
+// console.log(Object.fromEntries(objArr));
+// console.log(article.propertyIsEnumerable("propertyIsEnumerable"));
+
+// Object.seal(article);
+
+// delete article.id;
+// console.log(article.id);
+
+// console.log(Object.isSealed(article));
+
+// console.log(Object.values(article.info));
+
