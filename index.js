@@ -987,3 +987,86 @@
 
 // console.log(Object.values(article.info));
 
+// Advanced data type: Set Lesson
+const userIdList = new Set([40132, 45451, 65431, 506541]);
+
+// console.log(userIdList);
+
+// for(const value of userIdList) {
+//     console.log(value);
+// }
+// userIdList.forEach((value, value2, set) =>console.log(value));
+
+// console.log(userIdList.size);
+
+// // =====
+
+// userIdList.add(40132);
+
+// console.log(userIdList);
+// console.log(userIdList.size);
+
+// // =====
+
+// userIdList.add(40133);
+
+// console.log(userIdList);
+// console.log(userIdList.size);
+
+// // =====
+
+// const result = userIdList.delete(40133);
+
+// console.log(userIdList);
+// console.log(userIdList.size);
+// // console.log(result);
+
+// // ====
+// console.log(userIdList.has(40133));
+// console.log(userIdList.has(40132));
+
+// // ===
+
+// userIdList.clear();
+// console.log(userIdList);
+
+// const valueList = userIdList.values();
+
+// const arr = Array.from(valueList);
+
+// console.log(arr);
+
+// const arr = [1,2,3,4,5,1,2,3,4,5];
+
+// const set = new Set(arr);
+
+// const arr2 = [...set];
+
+// console.log(arr2);
+
+// const categoryList = new Set();
+
+// function addCategory(category) {
+//     if(categoryList.has(category)) {
+//         console.log('Ця категорія вже є');
+
+//         return false;
+//     } 
+//     categoryList.add(category);
+//     return true;
+// }
+// console.log(addCategory('спорт'));
+// console.log(addCategory('спорт'));
+// console.log(addCategory('їжа'));
+
+const students = [
+    {id: 1, name: "John", course: "Math"},
+    {id: 2, name: "Jane", course: "Science"},
+    {id: 3, name: "Adam", course: "Math"},
+    {id: 1, name: "Eve", course: "English"},
+    {id: 1, name: "Kate", course: "Science"},
+];
+const course = students.map((student) =>student.course);
+console.log(course);
+const courseList = new Set(course);
+console.log(Array.from(courseList));
