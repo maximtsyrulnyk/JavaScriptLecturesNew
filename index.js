@@ -988,7 +988,7 @@
 // console.log(Object.values(article.info));
 
 // Advanced data type: Set Lesson
-const userIdList = new Set([40132, 45451, 65431, 506541]);
+// const userIdList = new Set([40132, 45451, 65431, 506541]);
 
 // console.log(userIdList);
 
@@ -1059,14 +1059,116 @@ const userIdList = new Set([40132, 45451, 65431, 506541]);
 // console.log(addCategory('спорт'));
 // console.log(addCategory('їжа'));
 
-const students = [
-    {id: 1, name: "John", course: "Math"},
-    {id: 2, name: "Jane", course: "Science"},
-    {id: 3, name: "Adam", course: "Math"},
-    {id: 1, name: "Eve", course: "English"},
-    {id: 1, name: "Kate", course: "Science"},
-];
-const course = students.map((student) =>student.course);
-console.log(course);
-const courseList = new Set(course);
-console.log(Array.from(courseList));
+// const students = [
+//     {id: 1, name: "John", course: "Math"},
+//     {id: 2, name: "Jane", course: "Science"},
+//     {id: 3, name: "Adam", course: "Math"},
+//     {id: 1, name: "Eve", course: "English"},
+//     {id: 1, name: "Kate", course: "Science"},
+// ];
+// const course = students.map((student) =>student.course);
+// console.log(course);
+// const courseList = new Set(course);
+// console.log(Array.from(courseList));
+
+// Advanced data type: Dictionary lesson
+// const button = new Map([
+//     ['color', 'red'], 
+//     ['size', '32px'],
+// ]);
+
+// console.log(button);
+
+// const obj= {
+//     color: "red",
+//     size: 32 + "px",
+// };
+
+// const set = new Set(["red", "32px"]);
+
+// const button2 = new Map(Object.entries(Object.fromEntries(set.entries())));
+// console.log(button2);
+
+// const button3 = new Map(set.entries());
+// console.log(button3);
+
+// const set2 = new Set(button.keys());
+// console.log(set2);
+
+// const button = new Map([
+//     ['color', 'red', '32'], 
+//     ['size', '32px'],
+// ]);
+
+// for(const [key, value] of button) {
+//     console.log(key, value);
+// }
+
+// button.forEach((value, key, map) =>console.log(value, key, map));
+
+// button.set('weight', 600);
+
+// console.log(button.get('weight'));
+
+// console.log(button.delete('weight'));
+// console.log(button.delete('weight'));
+
+// console.log(button);
+
+// console.log(button.has('weight'));
+// console.log(button.has('color'));
+
+// button.clear();
+
+// console.log(button);
+
+// const LANG_LIST = {
+//     UA: 'uk-UA',
+//     EU: 'eu-US',
+// }
+
+// const activeLang = LANG_LIST.UA;
+
+// const product = {
+//     price: 100,
+//     amount: 3,
+
+//     info: new Map([[LANG_LIST.UA, {title: "Заголовок", info: "Інформація", }], [LANG_LIST.EU, {title: "Title", info: "Info", }],]),
+// };
+
+// const info = product.info.get(activeLang);
+
+// console.log(info);
+// console.log(product.info.has(activeLang));
+
+const user1 = {
+    id: 1323,
+    name: "Ivan",
+};
+
+const user2 = {
+    id: 4231,
+    name: "Anton",
+};
+
+const product1 = {
+    id: 5314,
+    title: "Mobile Phone",
+};
+
+const product2 = {
+    id: 5335,
+    title: "Apple",
+};
+
+// const userProduct = new Map();
+// userProduct.set(user1, product1).set(user2, product2);
+// console.log(userProduct.get(user1));
+const productClientList = new Map([[product1, new Set()]]);
+productClientList.set(product1, productClientList.get(product1).add(user1));
+console.log(productClientList);
+productClientList.set(product1, productClientList.get(product1).add(user1));
+// console.log(product1, productClientList.get(product1).add(user2));
+console.log(productClientList);
+const has = productClientList.get(product1).has(user1);
+console.log(has);
