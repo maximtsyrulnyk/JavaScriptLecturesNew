@@ -1141,34 +1141,96 @@
 // console.log(info);
 // console.log(product.info.has(activeLang));
 
-const user1 = {
-    id: 1323,
-    name: "Ivan",
-};
+// const user1 = {
+//     id: 1323,
+//     name: "Ivan",
+// };
 
-const user2 = {
-    id: 4231,
-    name: "Anton",
-};
+// const user2 = {
+//     id: 4231,
+//     name: "Anton",
+// };
 
-const product1 = {
-    id: 5314,
-    title: "Mobile Phone",
-};
+// const product1 = {
+//     id: 5314,
+//     title: "Mobile Phone",
+// };
 
-const product2 = {
-    id: 5335,
-    title: "Apple",
-};
+// const product2 = {
+//     id: 5335,
+//     title: "Apple",
+// };
 
 // const userProduct = new Map();
 // userProduct.set(user1, product1).set(user2, product2);
 // console.log(userProduct.get(user1));
-const productClientList = new Map([[product1, new Set()]]);
-productClientList.set(product1, productClientList.get(product1).add(user1));
-console.log(productClientList);
-productClientList.set(product1, productClientList.get(product1).add(user1));
-// console.log(product1, productClientList.get(product1).add(user2));
-console.log(productClientList);
-const has = productClientList.get(product1).has(user1);
-console.log(has);
+// const productClientList = new Map([[product1, new Set()]]);
+// productClientList.set(product1, productClientList.get(product1).add(user1));
+// console.log(productClientList);
+// productClientList.set(product1, productClientList.get(product1).add(user1));
+// // console.log(product1, productClientList.get(product1).add(user2));
+// console.log(productClientList);
+// const has = productClientList.get(product1).has(user1);
+// console.log(has);
+
+// Built-in capabilities: JSON and URL lesson
+// const roleField = 'roleName'; 
+
+// const data = {
+//     id: 1043,
+//     login: 'user3431',
+//     password: '123451we@',
+//     roleField: "Admin",
+//     go() {
+//         console.log("go");
+//     },
+//     test1: {
+//         test2: 123,
+//     },
+// };
+
+// const jsonData = JSON.stringify(data, (key, value) => {
+//     if(key === roleField) {
+//         return null;
+//     }
+//     if(typeof value === 'string') {
+//         return value.toUpperCase();
+//     }
+//     if(typeof value === 'number') {
+//         return value * 10;
+//     }
+
+//     return value;
+// }, 8);
+
+// console.log(jsonData);
+
+// const parseData = JSON.parse(jsonData, (key, value) => {
+//     if(key === roleField) {
+//         return "Admin";
+//     }
+//     if(typeof value === "string") {
+//         return value.toLowerCase();
+//     }
+//     if(typeof value === "number") {
+//         return value / 10;
+//     }
+//     return value;
+// });
+// console.log(parseData);
+// const mainUrl = new URL('https://www.google.com/search?q=hello&sca_esv=18f74c4f65c74ef0&sxsrf=ACQVn0_dpCiBDisufK_KUzEV7bqMIJcjWg%3A1709031787672&ei=a8HdZd3NKN6rxc8PnLya0Ao&udm=&ved=0ahUKEwidr_TEr8uEAxXeVfEDHRyeBqoQ4dUDCBA&uact=5&oq=helloWorld&gs_lp=Egxnd3Mtd2l6LXNlcnAiBWhlbGxvMgoQLhiABBiKBRhDMgoQLhiABBiKBRhDMgoQABiABBiKBRhDMgoQLhiABBiKBRhDMggQLhiABBjLATIIEAAYgAQYywEyChAAGIAEGIoFGEMyDhAuGIAEGMsBGMcBGK8BMgoQLhiABBiKBRhDMggQLhiABBjLATIZEC4YgAQYigUYQxiXBRjcBBjeBBjgBNgBAUjlFVAAWOoQcAB4AJABAJgB8ASgAbsLqgEJMC4zLjQtMS4xuAEDyAEA-AEBmAIFoAKpDMICChAjGIAEGIoFGCfCAgUQABiABMICBRAuGIAEwgILEC4YgAQYxwEY0QOYAwC6BgYIARABGBSSBwkwLjMuNC0xLjE&sclient=gws-wiz-serp')
+// const url = mainUrl.searchParams;
+
+// console.log(url);
+
+// console.log(url.has('q'));
+// console.log(url.append("name", "google"));
+// console.log(url);
+// console.log(url.getAll("q"));
+// url.sort();
+// console.log(url);
+// console.log(mainUrl);
+
+const url = new URL("https://www.google.com/search");
+url.searchParams.append('q', 'cat photo');
+console.log(url.href);
