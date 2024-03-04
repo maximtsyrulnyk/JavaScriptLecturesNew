@@ -1231,6 +1231,79 @@
 // console.log(url);
 // console.log(mainUrl);
 
-const url = new URL("https://www.google.com/search");
-url.searchParams.append('q', 'cat photo');
-console.log(url.href);
+// const url = new URL("https://www.google.com/search");
+// url.searchParams.append('q', 'cat photo');
+// console.log(url.href);
+
+//Built-in features: Date
+const date = new Date();
+const dateString = date.toISOString();
+console.log('year',date.getFullYear());
+date.setFullYear(2020);
+console.log('year',date.getFullYear());
+
+console.log('month',date.getMonth());
+date.setMonth(1);
+console.log('month',date.getMonth());
+
+console.log('date',date.getDate());
+date.setDate(27);
+console.log('date',date.getDate());
+
+console.log('day',date.getDay());
+
+console.log('minutes',date.getMinutes());
+console.log(date.setMinutes(27));
+console.log('minutes',date.getMinutes());
+
+console.log('seconds',date.getSeconds());
+date.setSeconds(27);
+console.log('seconds',date.getSeconds());
+
+console.log('milliseconds',date.getMilliseconds());
+date.setMilliseconds(500);
+console.log('milliseconds',date.getMilliseconds());
+
+console.log(date.toDateString());
+// const date2 = Date.parse(dateString) + 1000 * 60 * 5;
+// console.log(date2);
+// console.log(date.toUTCString());
+// console.log(date.toString());
+// console.log(date.toISOString());
+// console.log(date.toDateString());
+// console.log(date.toTimeString());
+
+// const zone = date.getTimezoneOffset() / -60;
+// console.log(zone);
+
+const user = -3;
+
+function getUserTimeZone(timezone) {
+    // let date = Date.now();
+    let date = new Date (Date.UTC(2024, 5, 26, 12, 30, 0, 0));
+    
+
+    // console.log(date.getHours());
+    // console.log(date.getUTCHours());
+
+    date.setHours(date.getUTCHours() + timezone)
+
+    // const myTimezone = (date.getTimezoneOffset() / -60);
+
+    // date.setTime(date.getTime() - (1000 * 60 * 60) * myTimezone);
+
+    // date.setTime(date.getTime() + (1000 * 60 * 60) * timezone);
+
+    return date;
+}
+
+const userDate = getUserTimeZone(user);
+
+// console.log(userDate.getHours());
+// console.log(userDate.getUTCHours());
+
+// console.log(userDate.toTimeString());
+
+// console.log(new Date(getUserTimeZone(user)).toString());
+// console.log(new Date().toUTCString());
+// console.log(new Date(1719405000000).toUTCString());
