@@ -1236,35 +1236,35 @@
 // console.log(url.href);
 
 //Built-in features: Date
-const date = new Date();
-const dateString = date.toISOString();
-console.log('year',date.getFullYear());
-date.setFullYear(2020);
-console.log('year',date.getFullYear());
+// const date = new Date();
+// const dateString = date.toISOString();
+// console.log('year',date.getFullYear());
+// date.setFullYear(2020);
+// console.log('year',date.getFullYear());
 
-console.log('month',date.getMonth());
-date.setMonth(1);
-console.log('month',date.getMonth());
+// console.log('month',date.getMonth());
+// date.setMonth(1);
+// console.log('month',date.getMonth());
 
-console.log('date',date.getDate());
-date.setDate(27);
-console.log('date',date.getDate());
+// console.log('date',date.getDate());
+// date.setDate(27);
+// console.log('date',date.getDate());
 
-console.log('day',date.getDay());
+// console.log('day',date.getDay());
 
-console.log('minutes',date.getMinutes());
-console.log(date.setMinutes(27));
-console.log('minutes',date.getMinutes());
+// console.log('minutes',date.getMinutes());
+// console.log(date.setMinutes(27));
+// console.log('minutes',date.getMinutes());
 
-console.log('seconds',date.getSeconds());
-date.setSeconds(27);
-console.log('seconds',date.getSeconds());
+// console.log('seconds',date.getSeconds());
+// date.setSeconds(27);
+// console.log('seconds',date.getSeconds());
 
-console.log('milliseconds',date.getMilliseconds());
-date.setMilliseconds(500);
-console.log('milliseconds',date.getMilliseconds());
+// console.log('milliseconds',date.getMilliseconds());
+// date.setMilliseconds(500);
+// console.log('milliseconds',date.getMilliseconds());
 
-console.log(date.toDateString());
+// console.log(date.toDateString());
 // const date2 = Date.parse(dateString) + 1000 * 60 * 5;
 // console.log(date2);
 // console.log(date.toUTCString());
@@ -1276,28 +1276,28 @@ console.log(date.toDateString());
 // const zone = date.getTimezoneOffset() / -60;
 // console.log(zone);
 
-const user = -3;
+// const user = -3;
 
-function getUserTimeZone(timezone) {
-    // let date = Date.now();
-    let date = new Date (Date.UTC(2024, 5, 26, 12, 30, 0, 0));
+// function getUserTimeZone(timezone) {
+//     // let date = Date.now();
+//     let date = new Date (Date.UTC(2024, 5, 26, 12, 30, 0, 0));
     
 
-    // console.log(date.getHours());
-    // console.log(date.getUTCHours());
+//     // console.log(date.getHours());
+//     // console.log(date.getUTCHours());
 
-    date.setHours(date.getUTCHours() + timezone)
+//     date.setHours(date.getUTCHours() + timezone)
 
-    // const myTimezone = (date.getTimezoneOffset() / -60);
+//     // const myTimezone = (date.getTimezoneOffset() / -60);
 
-    // date.setTime(date.getTime() - (1000 * 60 * 60) * myTimezone);
+//     // date.setTime(date.getTime() - (1000 * 60 * 60) * myTimezone);
 
-    // date.setTime(date.getTime() + (1000 * 60 * 60) * timezone);
+//     // date.setTime(date.getTime() + (1000 * 60 * 60) * timezone);
 
-    return date;
-}
+//     return date;
+// }
 
-const userDate = getUserTimeZone(user);
+// const userDate = getUserTimeZone(user);
 
 // console.log(userDate.getHours());
 // console.log(userDate.getUTCHours());
@@ -1307,3 +1307,34 @@ const userDate = getUserTimeZone(user);
 // console.log(new Date(getUserTimeZone(user)).toString());
 // console.log(new Date().toUTCString());
 // console.log(new Date(1719405000000).toUTCString());
+
+// Math
+// console.log(Math.PI);
+// const a = 5;
+// const b = 10;
+// const c = -5;
+// const d = "0ffff";
+
+// const arr = [20, 30, 40];
+
+// console.log(Math.min(a, b, c, ...arr));
+// console.log(Math.sign(d));
+// console.log(Math.pow(a, 3));
+// console.log(Math.sqrt(16));
+
+// console.log(Math.floor(1.156), Math.floor(1.556),Math.floor(1.956));
+
+// console.log(Math.ceil(1.156), Math.ceil(1.556),Math.ceil(1.956));
+
+// console.log(Math.round(1.156), Math.round(1.5),Math.round(1.956));
+
+// console.log(Math.trunc(1.156), Math.trunc(1.5),Math.trunc(1.956));
+
+// const random = Math.trunc(Math.random() * 10) + 1;
+
+// console.log(random);
+
+console.log(Math.fround(0.1 + 0.2) === Math.fround(0.3));
+
+console.log(0.1 + 0.2);
+console.log(Math.fround(0.1+0.2));
