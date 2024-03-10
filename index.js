@@ -1334,7 +1334,57 @@
 
 // console.log(random);
 
-console.log(Math.fround(0.1 + 0.2) === Math.fround(0.3));
+// console.log(Math.fround(0.1 + 0.2) === Math.fround(0.3));
 
-console.log(0.1 + 0.2);
-console.log(Math.fround(0.1+0.2));
+// console.log(0.1 + 0.2);
+// console.log(Math.fround(0.1+0.2));
+
+// Built-in features: Console
+// // {
+// //     let a = 5;
+// //     a = 10;
+// //     console.exception('Error, a змінна повинна бути 5');
+// // }
+
+// const counterLabel = 'Timer';
+
+// console.time(counterLabel);
+// console.count(counterLabel);
+
+// // console.groupCollapsed('Group 1');
+
+// // console.log('Test 1');
+// // console.warn('Test 2');
+// // console.groupCollapsed('Group 2');
+// console.timeLog(counterLabel);
+// console.count(counterLabel);
+// // console.debug('Test 3');
+// // console.groupEnd();
+// // console.groupEnd();
+// console.timeEnd(counterLabel);
+// console.countReset(counterLabel);
+// console.count(counterLabel);
+
+// const test1 = () => console.trace('Hello');
+
+// const test2 = () => test1();
+
+// const test3 = () => test2();
+
+// test3();
+
+// const data = [
+//     {name: "John", age: 25, city: "New York"},
+//     {name: "Alice", age: 30, city: "London"},
+// ];
+
+// console.table(data, ['name']);
+
+// const a = 5;
+// const b = 10;
+
+// const result = a > b;
+// console.assert(result, "Info");
+// console.clear();
+
+console.log('%cHello World', 'font-size: 50px; color: yellow');
