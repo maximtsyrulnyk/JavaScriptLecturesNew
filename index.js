@@ -1387,4 +1387,20 @@
 // console.assert(result, "Info");
 // console.clear();
 
-console.log('%cHello World', 'font-size: 50px; color: yellow');
+// console.log('%cHello World', 'font-size: 50px; color: yellow');
+
+// Built-in regular expressions
+const regexp = /(?<group1>.e)(?<group2>st)/gims;
+
+// const regexp1 = RegExp("test", "g");
+
+// console.log(regexp.ignoreCase);
+// console.log(regexp.test('This is test and est'));
+// console.log(regexp.exec('This is test and est'));
+// regexp.lastIndex = 9;
+// console.log(regexp.exec('This is test and est'));
+// console.log(regexp.exec('This is test and est'));
+const test = 'This is test and est';
+const result = test.matchAll(regexp);
+console.log(result.next());
+console.log(result.next());
