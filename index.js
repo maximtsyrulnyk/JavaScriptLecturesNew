@@ -1406,55 +1406,176 @@
 // console.log(result.next());
 
 // Error handling
-function getUserData()
-{
-    try {const a = 10;
-a = 5;
-//...робить запит до бази даних
-// console.log("1");
-} catch(err) {
-    //err - помилка про те, що дані з сервера не можуть бути отриманні
-    const newError = new Error(`Помилка. Неможливо отримати дані користувача ${userId}`, {
-        cause: err,
-    });
-    console.log(new Error);
-}}
+// function getUserData()
+// {
+//     try {const a = 10;
+// a = 5;
+// //...робить запит до бази даних
+// // console.log("1");
+// } catch(err) {
+//     //err - помилка про те, що дані з сервера не можуть бути отриманні
+//     const newError = new Error(`Помилка. Неможливо отримати дані користувача ${userId}`, {
+//         cause: err,
+//     });
+//     console.log(new Error);
+// }}
 
 
-function updateUserData(userId) {
-    try {
-        const data = getUserData(userId);
+// function updateUserData(userId) {
+//     try {
+//         const data = getUserData(userId);
 
-        data.name = 'Ivan'; 
-    } catch(err) {
-        const newError = new Error(`Помилка. Неможливо оновити дані користувача ${userId}`, {
-            cause: err,
-        });
-        console.log(newError.toString());
-    }
-}
-updateUserData(3123);
+//         data.name = 'Ivan'; 
+//     } catch(err) {
+//         const newError = new Error(`Помилка. Неможливо оновити дані користувача ${userId}`, {
+//             cause: err,
+//         });
+//         console.log(newError.toString());
+//     }
+// }
+// updateUserData(3123);
 
-const ERROR_ID_LIST = {
-    NOT_NUMBER: 1,
+// const ERROR_ID_LIST = {
+//     NOT_NUMBER: 1,
+// };
+
+// function sumNum(a, b) {
+//     if(typeof a !== 'number' || typeof b !== 'number') {
+//         // const error = new TypeError("Аргументи не є числами");
+//         // error.name = ERROR_ID_LIST.NOT_NUMBER;
+//         // throw error;
+//         return false;
+//     }
+
+//     return a + b;
+// }
+
+// try {
+//     sumNum(10, "abc");
+// } catch(err) {
+//     if(err.name === ERROR_ID_LIST.NOT_NUMBER) {
+//         sumNum(10, 0);
+//     }
+//     console.log(err.name);
+// }
+
+// Object-oriented-programming in JavaScript
+// let Animal = {
+//     name: 'Тварина',
+//     voice: 'Звук',
+//     say() {
+//         console.log(`${this.name} каже ${this.voice}`);
+//     },
+// };
+
+// Animal = null;
+
+// const dog = Object.create(Animal);
+// dog.name = 'Бобік';
+// dog.voice = 'Гав';
+
+// dog.say();
+// Object.defineProperty(dog, '_space', {
+//     value: 0,
+//     writable: true,
+// });
+// Object.defineProperty(dog, 'space', {
+//     set(value){
+//         this._space = value*4;
+//     }, 
+//     get() 
+//     {
+//         return `${this._space} px`;
+//     },
+
+// });
+// console.log(dog.space);
+
+// dog.space = 4;
+
+// console.log(dog.hasOwnProperty("voice"));
+
+// console.log(dog.voice);
+
+// Object.defineProperty(dog, "location", {
+//     value: "Ukraine",
+// });
+// console.log(dog.location);
+
+// dog.location = "USA";
+
+// console.log(dog.location);
+// Animal.go = function() {console.log(`${this.name} біжить ${this.voice}`);}
+// dog.go();
+// console.log(Object.getPrototypeOf(dog) === Animal);
+// console.log(Animal.isPrototypeOf(dog));
+
+// Object.setPrototypeOf(dog, {asd: "123"});
+// console.log(Object.getPrototypeOf(dog));
+
+// dog.__proto__ = null;
+
+const Tag = {
+    render(value) {
+        return `<${this.className}>${value} <>`;
+    },
+    className: null,
 };
 
-function sumNum(a, b) {
-    if(typeof a !== 'number' || typeof b !== 'number') {
-        // const error = new TypeError("Аргументи не є числами");
-        // error.name = ERROR_ID_LIST.NOT_NUMBER;
-        // throw error;
-        return false;
-    }
+const Button = Object.create(Tag);
 
-    return a + b;
+Button.render = function(value = "") {
+    return `<button class="${this.className}" style="${this.style}">${value} <button>`;
+};
+
+const mainButton = Object.create(Button, {
+    style: {
+        value: 'background: red;',
+        writable: true,
+    },
+    className: {
+        value: 'my-button',
+    }
+});
+
+console.log(mainButton.render("Click"));
+console.log(mainButton.className);
+
+const Input = Object.create(Tag);
+
+Input.render = function() {
+    return `<input placeholder="${this.placeholder}" style="${this.style}"/>`;
+};
+
+const loginInput = Object.create(Input, {
+    style: {
+        value: 'border: 1px solid red;',
+        writable: true,
+    },
+    placeholder: {
+        value: "Login....",
+    },
+});
+
+console.log(loginInput.render());
+console.log(loginInput.className);
+
+const serverRequest = {
+    data: null,
+    getData() {
+        ///......
+    },
+    render() {
+        this.data = this.getData();
+
+        return `...`
+    }
 }
 
-try {
-    sumNum(10, "abc");
-} catch(err) {
-    if(err.name === ERROR_ID_LIST.NOT_NUMBER) {
-        sumNum(10, 0);
+const Page = {
+    components: [],
+    path: '/.../...',
+    render() {
+        //.....
     }
-    console.log(err.name);
 }
