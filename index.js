@@ -1515,67 +1515,177 @@
 
 // dog.__proto__ = null;
 
-const Tag = {
-    render(value) {
-        return `<${this.className}>${value} <>`;
-    },
-    className: null,
-};
+// const Tag = {
+//     render(value) {
+//         return `<${this.className}>${value} <>`;
+//     },
+//     className: null,
+// };
 
-const Button = Object.create(Tag);
+// const Button = Object.create(Tag);
 
-Button.render = function(value = "") {
-    return `<button class="${this.className}" style="${this.style}">${value} <button>`;
-};
+// Button.render = function(value = "") {
+//     return `<button class="${this.className}" style="${this.style}">${value} <button>`;
+// };
 
-const mainButton = Object.create(Button, {
-    style: {
-        value: 'background: red;',
-        writable: true,
-    },
-    className: {
-        value: 'my-button',
-    }
-});
+// const mainButton = Object.create(Button, {
+//     style: {
+//         value: 'background: red;',
+//         writable: true,
+//     },
+//     className: {
+//         value: 'my-button',
+//     }
+// });
 
-console.log(mainButton.render("Click"));
-console.log(mainButton.className);
+// console.log(mainButton.render("Click"));
+// console.log(mainButton.className);
 
-const Input = Object.create(Tag);
+// const Input = Object.create(Tag);
 
-Input.render = function() {
-    return `<input placeholder="${this.placeholder}" style="${this.style}"/>`;
-};
+// Input.render = function() {
+//     return `<input placeholder="${this.placeholder}" style="${this.style}"/>`;
+// };
 
-const loginInput = Object.create(Input, {
-    style: {
-        value: 'border: 1px solid red;',
-        writable: true,
-    },
-    placeholder: {
-        value: "Login....",
-    },
-});
+// const loginInput = Object.create(Input, {
+//     style: {
+//         value: 'border: 1px solid red;',
+//         writable: true,
+//     },
+//     placeholder: {
+//         value: "Login....",
+//     },
+// });
 
-console.log(loginInput.render());
-console.log(loginInput.className);
+// console.log(loginInput.render());
+// console.log(loginInput.className);
 
-const serverRequest = {
-    data: null,
-    getData() {
-        ///......
-    },
-    render() {
-        this.data = this.getData();
+// const serverRequest = {
+//     data: null,
+//     getData() {
+//         ///......
+//     },
+//     render() {
+//         this.data = this.getData();
 
-        return `...`
+//         return `...`
+//     }
+// }
+
+// const Page = {
+//     components: [],
+//     path: '/.../...',
+//     render() {
+//         //.....
+//     }
+// }
+
+// Constructor function
+// const User = {
+//     login: null,
+//     password: null,
+//     role: null,
+//     age: null,
+// };
+
+function User(data) {
+    if(new.target) {
+        const {login = null, password = null, isAdmin = null, age = 0} = data;
+        const role = isAdmin ? 'Admin' : 'User';
+
+        const object = Object.assign(this, {
+            login, 
+            password, 
+            role,
+            age,
+        });
+
+        if(role === 'Admin') {
+            object.verify = function(password) {
+                console.debug(password, this);
+                return this.password === password;
+            };
+        }
+        if(age >= 50) {
+            object.login = String(object.login).toUpperCase();
+        }
+        object.toString = function() {
+            return `Користувач ${this.login}`
+        }
+        return object;
+    } else {
+        return new User(data);
     }
 }
 
-const Page = {
-    components: [],
-    path: '/.../...',
-    render() {
-        //.....
-    }
+// function UserAdmin({login = null, password = null, isAdmin = null, age=0}) {
+//     this.login = login;
+//     this.password = password;
+//     this.role = isAdmin ? 'Admin' : 'User';
+//     this.age = age;
+    
+//     this.verify = function(password) {
+//         return this.password === password;
+//     };
+// }
+
+// =====
+
+const registerData = {
+    login: 'ivan',
+    password: '123qwe342',
+    isAdmin: true,
+    age: 50,
+};
+User.prototype.test = 'Hello world';
+const user = User(registerData);
+console.log(user.toString());
+
+// ========== 
+const adminData = {
+    login: 'ivan',
+    password: '123qwe342',
+    isAdmin: true,
+};
+
+const admin = new User(adminData);
+console.log(admin.password);
+
+// ====
+
+
+const testData = {
+    login: 'ivan',
+    password: '123qwe342',
+    age: 50,
+};
+const testUser = new User(testData);
+console.log(testUser.login);
+
+// =====
+
+console.log(Object.getPrototypeOf(testUser) === User.prototype);
+const test = User;
+console.log(test.name);
+
+// ===
+
+console.log("========");
+
+console.log(user.verify("123qwe342"));
+
+const verifyUser = user.verify.bind(user, "123qwe342");
+
+console.log(verifyUser());
+
+function Animal(name) {
+    this.name = name;
 }
+
+const Person = function(name, age) {
+    Animal.call(this, [name]);
+    this.age = age;
+}
+
+const user2 = new Person('Ivan', 32);
+console.log(user2.name);
