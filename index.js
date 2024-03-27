@@ -1588,35 +1588,35 @@
 //     age: null,
 // };
 
-function User(data) {
-    if(new.target) {
-        const {login = null, password = null, isAdmin = null, age = 0} = data;
-        const role = isAdmin ? 'Admin' : 'User';
+// function User(data) {
+//     if(new.target) {
+//         const {login = null, password = null, isAdmin = null, age = 0} = data;
+//         const role = isAdmin ? 'Admin' : 'User';
 
-        const object = Object.assign(this, {
-            login, 
-            password, 
-            role,
-            age,
-        });
+//         const object = Object.assign(this, {
+//             login, 
+//             password, 
+//             role,
+//             age,
+//         });
 
-        if(role === 'Admin') {
-            object.verify = function(password) {
-                console.debug(password, this);
-                return this.password === password;
-            };
-        }
-        if(age >= 50) {
-            object.login = String(object.login).toUpperCase();
-        }
-        object.toString = function() {
-            return `Користувач ${this.login}`
-        }
-        return object;
-    } else {
-        return new User(data);
-    }
-}
+//         if(role === 'Admin') {
+//             object.verify = function(password) {
+//                 console.debug(password, this);
+//                 return this.password === password;
+//             };
+//         }
+//         if(age >= 50) {
+//             object.login = String(object.login).toUpperCase();
+//         }
+//         object.toString = function() {
+//             return `Користувач ${this.login}`
+//         }
+//         return object;
+//     } else {
+//         return new User(data);
+//     }
+// }
 
 // function UserAdmin({login = null, password = null, isAdmin = null, age=0}) {
 //     this.login = login;
@@ -1631,61 +1631,144 @@ function User(data) {
 
 // =====
 
-const registerData = {
-    login: 'ivan',
-    password: '123qwe342',
-    isAdmin: true,
-    age: 50,
-};
-User.prototype.test = 'Hello world';
-const user = User(registerData);
-console.log(user.toString());
+// const registerData = {
+//     login: 'ivan',
+//     password: '123qwe342',
+//     isAdmin: true,
+//     age: 50,
+// };
+// User.prototype.test = 'Hello world';
+// const user = User(registerData);
+// console.log(user.toString());
 
-// ========== 
-const adminData = {
-    login: 'ivan',
-    password: '123qwe342',
-    isAdmin: true,
-};
+// // ========== 
+// const adminData = {
+//     login: 'ivan',
+//     password: '123qwe342',
+//     isAdmin: true,
+// };
 
-const admin = new User(adminData);
-console.log(admin.password);
+// const admin = new User(adminData);
+// console.log(admin.password);
 
 // ====
 
 
-const testData = {
-    login: 'ivan',
-    password: '123qwe342',
-    age: 50,
+// const testData = {
+//     login: 'ivan',
+//     password: '123qwe342',
+//     age: 50,
+// };
+// const testUser = new User(testData);
+// console.log(testUser.login);
+
+// // =====
+
+// console.log(Object.getPrototypeOf(testUser) === User.prototype);
+// const test = User;
+// console.log(test.name);
+
+// // ===
+
+// console.log("========");
+
+// console.log(user.verify("123qwe342"));
+
+// const verifyUser = user.verify.bind(user, "123qwe342");
+
+// console.log(verifyUser());
+
+// function Animal(name) {
+//     this.name = name;
+// }
+
+// const Person = function(name, age) {
+//     Animal.call(this, [name]);
+//     this.age = age;
+// }
+
+// const user2 = new Person('Ivan', 32);
+// console.log(user2.name);
+
+// Classes
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    test = () => {
+        console.log("Hello world", this.name);
+    }
+}
+class User extends Person{
+    constructor(login, password) {
+        super(login);
+        this.login = login;
+        this.password = password;
+    }
+    login = null;
+    password = null;
+    #role = null;
+    age = null;
+
+    id = null;
+    #id = 1000
+
+    isAdmin = () => {
+        console.log(this.#id);
+        this.createAdminUser();
+        return this.role !== "Admin";
+    };
+    #createAdminUser = (login) => {
+        const password = this.generateRandomPassword();
+        return new User();
+    };
+
+    static generateRandomPassword = () => {
+        return true;
+    };
+    get admin() {
+        return this.#role === "Admin";
+    }
+    set admin(value) {
+        this.#role = "Admin";
+    }
 };
-const testUser = new User(testData);
-console.log(testUser.login);
 
-// =====
+// function Animal() {
+//     this.test = 'Hello world';
+// }
 
-console.log(Object.getPrototypeOf(testUser) === User.prototype);
-const test = User;
-console.log(test.name);
+// function User({login, password, role, age}) {
+//     Animal.apply(this);
 
-// ===
+//     this.login = login;
+//     this.password = password;
+//     this.role = role;
+//     this.age = age;
 
-console.log("========");
+//     Object.defineProperty(this, {
+//         name: {
+//             get() {},
+//             set() {},
+//         },
+//     });
+// }
 
-console.log(user.verify("123qwe342"));
+// console.log(new User({}).test);
+const user = new User('Ivan', "dshakdahlslkjdas12321");
+// console.log(user.isAdmin());
 
-const verifyUser = user.verify.bind(user, "123qwe342");
+function verifyAdmin(fn) {
+    const result = fn();
 
-console.log(verifyUser());
-
-function Animal(name) {
-    this.name = name;
+    if(!result) {
+        throw new Error("Не адмін");
+    }
+    return true;
 }
-
-const Person = function(name, age) {
-    Animal.call(this, [name]);
-    this.age = age;
-}
-
-const user2 = new Person('Ivan', 32);
-console.log(user2.name);
+// verifyAdmin(user.isAdmin);
+// console.log(user.admin);
+// user.admin = true;
+// console.log(user.admin);
+console.log(user instanceof User);
+// console.log(user.test());
