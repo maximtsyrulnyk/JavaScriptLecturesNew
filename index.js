@@ -1691,48 +1691,48 @@
 // console.log(user2.name);
 
 // Classes
-class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    test = () => {
-        console.log("Hello world", this.name);
-    }
-}
-class User extends Person{
-    constructor(login, password) {
-        super(login);
-        this.login = login;
-        this.password = password;
-    }
-    login = null;
-    password = null;
-    #role = null;
-    age = null;
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     test = () => {
+//         console.log("Hello world", this.name);
+//     }
+// }
+// class User extends Person{
+//     constructor(login, password) {
+//         super(login);
+//         this.login = login;
+//         this.password = password;
+//     }
+//     login = null;
+//     password = null;
+//     #role = null;
+//     age = null;
 
-    id = null;
-    #id = 1000
+//     id = null;
+//     #id = 1000
 
-    isAdmin = () => {
-        console.log(this.#id);
-        this.createAdminUser();
-        return this.role !== "Admin";
-    };
-    #createAdminUser = (login) => {
-        const password = this.generateRandomPassword();
-        return new User();
-    };
+//     isAdmin = () => {
+//         console.log(this.#id);
+//         this.createAdminUser();
+//         return this.role !== "Admin";
+//     };
+//     #createAdminUser = (login) => {
+//         const password = this.generateRandomPassword();
+//         return new User();
+//     };
 
-    static generateRandomPassword = () => {
-        return true;
-    };
-    get admin() {
-        return this.#role === "Admin";
-    }
-    set admin(value) {
-        this.#role = "Admin";
-    }
-};
+//     static generateRandomPassword = () => {
+//         return true;
+//     };
+//     get admin() {
+//         return this.#role === "Admin";
+//     }
+//     set admin(value) {
+//         this.#role = "Admin";
+//     }
+// };
 
 // function Animal() {
 //     this.test = 'Hello world';
@@ -1755,20 +1755,47 @@ class User extends Person{
 // }
 
 // console.log(new User({}).test);
-const user = new User('Ivan', "dshakdahlslkjdas12321");
+// const user = new User('Ivan', "dshakdahlslkjdas12321");
 // console.log(user.isAdmin());
 
-function verifyAdmin(fn) {
-    const result = fn();
+// function verifyAdmin(fn) {
+//     const result = fn();
 
-    if(!result) {
-        throw new Error("Не адмін");
-    }
-    return true;
-}
+//     if(!result) {
+//         throw new Error("Не адмін");
+//     }
+//     return true;
+// }
 // verifyAdmin(user.isAdmin);
 // console.log(user.admin);
 // user.admin = true;
 // console.log(user.admin);
-console.log(user instanceof User);
+// console.log(user instanceof User);
 // console.log(user.test());
+
+// Programming patterns 1 part
+class RecentPurchases {
+    static #instance = null;
+
+    constructor() {
+        this.purchases = [];
+    }
+
+    static create() {
+        if(!this.#instance) {
+            this.#instance = new RecentPurchases();
+        }
+
+        return this.#instance;
+    }
+
+    add(item) {
+        this.purchases.push(item);
+    }
+    get() {
+        return this.purchases;
+    }
+}
+const lastPurchaseList = RecentPurchases.create();
+const lastPurchaseList2 = RecentPurchases.create();
+console.log(lastPurchaseList = lastPurchaseList2);
