@@ -1855,249 +1855,249 @@
 
 // console.log(myIconButton);
 
-class User {
-    constructor(email) {
-        this.email = email;
-    }
+// class User {
+//     constructor(email) {
+//         this.email = email;
+//     }
 
-    sendEmail(message) {
-        console.log(`Відправки на email ${this.email} повідомлення ${message}`);
-    }
-}
+//     sendEmail(message) {
+//         console.log(`Відправки на email ${this.email} повідомлення ${message}`);
+//     }
+// }
 
-class Video {
-    constructor(name) {
-        this.name = name;
-    }
-}
+// class Video {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
 
-class Channel {
-    constructor(name) {
-        this.name = name;
-        this.subscribers = [];
-    }
-    subscribe(user) {
-        // Підписка на канал
-        this.subscribers.push(user);
-    }
-    unsubscribe(user) {
-        // Відписка від каналу
-        this.subscribers = this.subscribers.filter((sub) => sub !== user);
-    }
+// class Channel {
+//     constructor(name) {
+//         this.name = name;
+//         this.subscribers = [];
+//     }
+//     subscribe(user) {
+//         // Підписка на канал
+//         this.subscribers.push(user);
+//     }
+//     unsubscribe(user) {
+//         // Відписка від каналу
+//         this.subscribers = this.subscribers.filter((sub) => sub !== user);
+//     }
 
-    createVideo(name) {
-        // Створення нового відео
-        const video = new Video(name);
-        this.sendNotify(video);
-    }
-    sendNotify(video) {
-        // Відправка повідомлення підписникам про нове відео
-        this.subscribers.forEach((subscriber) => {
-            subscriber.sendEmail(
-                `Нове відео "${video.name}" на Youtube каналі ${this.name}!`
-            );
-        });
-    }
-}
+//     createVideo(name) {
+//         // Створення нового відео
+//         const video = new Video(name);
+//         this.sendNotify(video);
+//     }
+//     sendNotify(video) {
+//         // Відправка повідомлення підписникам про нове відео
+//         this.subscribers.forEach((subscriber) => {
+//             subscriber.sendEmail(
+//                 `Нове відео "${video.name}" на Youtube каналі ${this.name}!`
+//             );
+//         });
+//     }
+// }
 
-const channel = new Channel("IT Brains");
+// const channel = new Channel("IT Brains");
 
-const user1 = new User("john@example.com");
-const user2 = new User("jane@example.com");
-const user3 = new User("alice@example.com");
+// const user1 = new User("john@example.com");
+// const user2 = new User("jane@example.com");
+// const user3 = new User("alice@example.com");
 
-channel.subscribe(user1);
-channel.subscribe(user2);
-channel.subscribe(user3);
+// channel.subscribe(user1);
+// channel.subscribe(user2);
+// channel.subscribe(user3);
 
-channel.createVideo("Урок про HTML");
+// channel.createVideo("Урок про HTML");
 
-channel.unsubscribe(user1);
+// channel.unsubscribe(user1);
 
-console.log("===========");
+// console.log("===========");
 
-channel.createVideo("Урок про CSS");
+// channel.createVideo("Урок про CSS");
 
 
-class Coffee {
-    name = "Кава";
+// class Coffee {
+//     name = "Кава";
 
-    cost = 10;
+//     cost = 10;
 
-    cook() {
-        console.log(`Приготування ${this.name}`);
-        // Логіка приготування кавового напою
-    }
-}
+//     cook() {
+//         console.log(`Приготування ${this.name}`);
+//         // Логіка приготування кавового напою
+//     }
+// }
 
-class MilkDecorator {
-    constructor(coffee, amount) {
-        this.coffee = coffee;
-        this.amount = amount;
-    }
-    get name() {
-        return `${this.coffee.name}, з ${this.amount} мл молока`;
-    }
+// class MilkDecorator {
+//     constructor(coffee, amount) {
+//         this.coffee = coffee;
+//         this.amount = amount;
+//     }
+//     get name() {
+//         return `${this.coffee.name}, з ${this.amount} мл молока`;
+//     }
 
-    get cost() {
-        const milkPrice = 0.05;
-        return this.coffee.cost + milkPrice + this.amount;
-    }
+//     get cost() {
+//         const milkPrice = 0.05;
+//         return this.coffee.cost + milkPrice + this.amount;
+//     }
 
-    cook() {
-        console.log(`Приготування ${this.name}`);
-        // Логіка приготування кави з молоком
-    }
-}
+//     cook() {
+//         console.log(`Приготування ${this.name}`);
+//         // Логіка приготування кави з молоком
+//     }
+// }
 
 // Створення об'єкту базової кави
-let coffee = new Coffee();
-console.log(coffee.name);
-console.log(coffee.cost);
-coffee.cook();
+// let coffee = new Coffee();
+// console.log(coffee.name);
+// console.log(coffee.cost);
+// coffee.cook();
 
 // Додавання декоратора молока до кави
-let latteCoffee = new MilkDecorator(coffee, 300);
-console.log(latteCoffee.name);
-console.log(latteCoffee.cost);
-latteCoffee.cook();
+// let latteCoffee = new MilkDecorator(coffee, 300);
+// console.log(latteCoffee.name);
+// console.log(latteCoffee.cost);
+// latteCoffee.cook();
 
-class TextEditor {
-    #text = "";
+// class TextEditor {
+//     #text = "";
 
-    set text(text) {
-        this.#text = text;
-        this.#save();
-    }
+//     set text(text) {
+//         this.#text = text;
+//         this.#save();
+//     }
 
-    get text() {
-        return this.#text;
-    }
+//     get text() {
+//         return this.#text;
+//     }
 
-    #save() {
-        Snapshot.create(this.text);
-    }
+//     #save() {
+//         Snapshot.create(this.text);
+//     }
 
-    restore() {
-        this.#text = Snapshot.restore().text;
-    }
-}
+//     restore() {
+//         this.#text = Snapshot.restore().text;
+//     }
+// }
 
-class Snapshot {
-    constructor(text) {
-        this.text = text;
-    }
+// class Snapshot {
+//     constructor(text) {
+//         this.text = text;
+//     }
 
-    static #snapshots = [];
+//     static #snapshots = [];
 
-    static create(text) {
-        console.log(text);
-        this.#snapshots.push(new Snapshot(text));
-    }
+//     static create(text) {
+//         console.log(text);
+//         this.#snapshots.push(new Snapshot(text));
+//     }
 
-    static restore() {
-        this.#snapshots.pop();
-        return this.#snapshots[this.#snapshots.length - 1];
-    }
-}
+//     static restore() {
+//         this.#snapshots.pop();
+//         return this.#snapshots[this.#snapshots.length - 1];
+//     }
+// }
 
-const editor = new TextEditor();
+// const editor = new TextEditor();
 
-editor.text = "Це початковий текст.";
-editor.text = "Редагований текст.";  
-editor.text = "Оновлений текст.";  
+// editor.text = "Це початковий текст.";
+// editor.text = "Редагований текст.";  
+// editor.text = "Оновлений текст.";  
 
-console.log("===");
+// console.log("===");
 
-console.log(editor.text);
+// console.log(editor.text);
 
-console.log("===");
+// console.log("===");
 
-editor.restore();
+// editor.restore();
 
-console.log(editor.text);
+// console.log(editor.text);
 
-editor.restore();
+// editor.restore();
 
-console.log(editor.text);
+// console.log(editor.text);
 
-class AuthHandler {
-    setNextHandler(handler) {
-        this.nextHandler = handler;
-        return handler;
-    }
+// class AuthHandler {
+//     setNextHandler(handler) {
+//         this.nextHandler = handler;
+//         return handler;
+//     }
 
-    login(user, password) {
-        if(this.nextHandler) {
-            return this.nextHandler.login(user, password);
-        } else {
-            return false;
-        }
-    }
-}
+//     login(user, password) {
+//         if(this.nextHandler) {
+//             return this.nextHandler.login(user, password);
+//         } else {
+//             return false;
+//         }
+//     }
+// }
 
-class TwoFactorAuthHandler extends AuthHandler {
-    login(user, password) {
-        if (
-            user === "john" &&
-            password === "password" &&
-            this.isValidTwoFactorCode()
-        ){
-            console.log("Вхід дозволено з двофакторною автентифікацією");
-            return true;
-        } else {
-            return super.login(user, password);
-        }
-    }
+// class TwoFactorAuthHandler extends AuthHandler {
+//     login(user, password) {
+//         if (
+//             user === "john" &&
+//             password === "password" &&
+//             this.isValidTwoFactorCode()
+//         ){
+//             console.log("Вхід дозволено з двофакторною автентифікацією");
+//             return true;
+//         } else {
+//             return super.login(user, password);
+//         }
+//     }
 
-    isValidTwoFactorCode() {
-        return true;
-    }
-}
+//     isValidTwoFactorCode() {
+//         return true;
+//     }
+// }
 
-class RoleHandler extends AuthHandler {
-    login(user, password) {
-        if(user === "guest") {
-            console.log("Вхід дозволено з роллю гостя");
-            return true;
-        } else {
-            return super.login(user, password);
-        }
-    }
-}
+// class RoleHandler extends AuthHandler {
+//     login(user, password) {
+//         if(user === "guest") {
+//             console.log("Вхід дозволено з роллю гостя");
+//             return true;
+//         } else {
+//             return super.login(user, password);
+//         }
+//     }
+// }
 
-class CredentialsHandler extends AuthHandler {
-    login(user, password) {
-        if(user === "admin" && password === "admin123") {
-            console.log("Вхід дозволено за логіном та паролем");
-            return true;
-        } else {
-            return super.login(user, password);
-        }
-    }
-}
+// class CredentialsHandler extends AuthHandler {
+//     login(user, password) {
+//         if(user === "admin" && password === "admin123") {
+//             console.log("Вхід дозволено за логіном та паролем");
+//             return true;
+//         } else {
+//             return super.login(user, password);
+//         }
+//     }
+// }
 
-class HandlerBuilder {
-    constructor() {
-        this.firstHandler = null;
-        this.lastHandler = null;
-    }
+// class HandlerBuilder {
+//     constructor() {
+//         this.firstHandler = null;
+//         this.lastHandler = null;
+//     }
 
-    add(handler) {
-        if(!this.firstHandler) {
-            this.firstHandler = handler;
-            this.lastHandler = handler;
-        } else {
-            this.lastHandler.setNextHandler(handler);
-            this.lastHandler = handler;
-        }
-        return this;
-    }
+//     add(handler) {
+//         if(!this.firstHandler) {
+//             this.firstHandler = handler;
+//             this.lastHandler = handler;
+//         } else {
+//             this.lastHandler.setNextHandler(handler);
+//             this.lastHandler = handler;
+//         }
+//         return this;
+//     }
 
-    create() {
-        return this.firstHandler;
-    }
-}
+//     create() {
+//         return this.firstHandler;
+//     }
+// }
 
 // const handler = new TwoFactorAuthHandler();
 
@@ -2109,54 +2109,99 @@ class HandlerBuilder {
 
 // handler.login("guest", "admin123");
 
-const handlerBuilder = new HandlerBuilder();
+// const handlerBuilder = new HandlerBuilder();
 
-const handler = handlerBuilder
-    .add(new CredentialsHandler())
-    .add(new TwoFactorAuthHandler())
-    .add(new RoleHandler())
-    .create();
+// const handler = handlerBuilder
+//     .add(new CredentialsHandler())
+//     .add(new TwoFactorAuthHandler())
+//     .add(new RoleHandler())
+//     .create();
 
-handler.login("admin", "admin123"); // Вхід дозволено за логіном та паролем
-handler.login("john", "password"); // Вхід дозволено з двофакторною автентифікацією
-handler.login("guest", "guest123"); // Вхід дозволено з роллю гостя
-handler.login("user", "password"); // Вхід заборонено
+// handler.login("admin", "admin123"); // Вхід дозволено за логіном та паролем
+// handler.login("john", "password"); // Вхід дозволено з двофакторною автентифікацією
+// handler.login("guest", "guest123"); // Вхід дозволено з роллю гостя
+// handler.login("user", "password"); // Вхід заборонено
 
 
-class User1 {
-    constructor(name, messanger) {
-        this.name = name;
-        this.messanger = messanger;
-    }
+// class User1 {
+//     constructor(name, messanger) {
+//         this.name = name;
+//         this.messanger = messanger;
+//     }
 
-    sendMessage(message) {
-        const formattedMessage = this.formatMessage(message);
-        this.messanger.sendMessage(formattedMessage);
-    }
+//     sendMessage(message) {
+//         const formattedMessage = this.formatMessage(message);
+//         this.messanger.sendMessage(formattedMessage);
+//     }
 
-    formatMessage(message) {
-        return `[${this.name}]: ${message}`;
-    }
-}
+//     formatMessage(message) {
+//         return `[${this.name}]: ${message}`;
+//     }
+// }
 
 // через СМС
 // через емайл
 // через телеграм бот
 
-class SMSMessanger {
-    static sendMessage(message) {
-        console.log(`Відправлено SMS: ${message}`);
+// class SMSMessanger {
+//     static sendMessage(message) {
+//         console.log(`Відправлено SMS: ${message}`);
+//     }
+// }
+
+// class EmailMessanger {
+//     static sendMessage(message) {
+//         console.log(`Відправлено Email: ${message}`);
+//     }
+// }
+
+// const john = new User1("John", SMSMessanger);
+// const jane = new User1("Jane", EmailMessanger);
+
+// john.sendMessage("Привіт!"); // Відправлено SMS: [John]: Привіт!
+// jane.sendMessage("Привіт!"); // Відправлено Email: [Jane]: Привіт!
+
+// Programming patterns 2 part
+
+class Comment {
+    constructor(text) {
+        this.text = text;
+    }
+
+    display() {
+        console.log(`- Коментар: ${this.text}`);
     }
 }
 
-class EmailMessanger {
-    static sendMessage(message) {
-        console.log(`Відправлено Email: ${message}`);
+class Video {
+    comments = [];
+
+    constructor(title) {
+        this.title = title;
+    }
+    addComment(comment) {
+        this.comments.push(comment);
+    }
+
+    removeComment(comment) {
+        const index = this.comments.indexOf(comment);
+        if(index !== -1) {
+            this.comments.splice(index, 1);
+        }
+    }
+    display() {
+        console.log(`Відео: ${this.title}`);
+
+        for(const comment of this.comments) {
+            comment.display();
+        }
     }
 }
 
-const john = new User1("John", SMSMessanger);
-const jane = new User1("Jane", EmailMessanger);
+const video = new Video("Навчальне відео");
+video.addComment(new Comment("Дуже корисне відео"));
+video.addComment(new Comment("Дякую за чудовий матеріал!"));
 
-john.sendMessage("Привіт!"); // Відправлено SMS: [John]: Привіт!
-jane.sendMessage("Привіт!"); // Відправлено Email: [Jane]: Привіт!
+video.comments[0].addComment(new Comment("Відповідь: Згоден!"));
+
+video.display();
