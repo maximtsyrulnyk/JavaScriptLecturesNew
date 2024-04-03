@@ -2499,14 +2499,41 @@ shoppingCart1.addItem({name: "Product 2", price: 50});
 console.log(shoppingCart1.calculateTotalPrice());
 
 class User {
-    constructor(name, email, password) {
+    constructor(name, chat) {
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.chat = chat;
+    }
+    sendMessage(message) {
+        console.log(`${this.name} відправив повідомлення ${message}`);
+        return this.chat.sendMessage(this, message);
+    }
+
+    receiveMessage(user, message) {
+        console.log(`${this.name} отримав повідомлення від ${user.name}: ${message}`);
     }
 }
 
-class UsrGroup {
+class Chat {
+    constructor() {
+        this.users = [];
+    }
+
+    // Додавання користувача до чату
+    addUser(user) {
+        this.users.push(user);
+    }
+
+    // Відправник повідомлення в чат
+    sendMessage(sender, message) {
+        for (const user of this.users) {
+            if(user !== sender) {
+                user.receiveMessage(sender, message);
+            }
+        }
+    }
+}
+
+class UserGroup {
    users = [];
 
     addUser(user) {
@@ -2514,12 +2541,54 @@ class UsrGroup {
     }
 }
 
-const group1 = new UserGroup();
+class UserIterator {
+    #users = null;
+    #currentIndex = 0;
+    constructor(userGroup) {
+        this.#users = userGroup.users;
+    }
 
-group1.addUser(new User("John Doe", "john@example.com", "password1"));
+    #hasNext() {
+        return this.#currentIndex < this.#users.length;
+    }
 
-const group2 = new UserGroup();
+    // Метод, який повертає наступний елемент
+    next() {
+        if(this.#hasNext()) {
+            const name = this.#users[this.#currentIndex].name;
+            this.#currentIndex++;
+            return name;
+        }
+        return null;
+    }
+    list() {
+        return this.#users.map((user) => user.name).join(", ")
+    }
+}
 
-group2.addUser(new User("Jane Smith", "jane@example.com", "password2"));
+const group = new UserGroup();
 
-console.log(group1, group2);
+group.addUser(new User("John Doe", "john@example.com", "password1"));
+
+group.addUser(new User("Jane Smith", "jane@example.com", "password2"));
+
+console.log(group.users.map((user) => user.name).join(", "));
+
+const iterator = new UserIterator(group);
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+
+console.log(iterator.list());
+
+const chatMediator = new Chat();
+
+const user1 = new User("John", chatMediator);
+const user2 = new User("Jane", chatMediator);
+const user3 = new User("Mike", chatMediator);
+
+chatMediator.addUser(user1);
+chatMediator.addUser(user2);
+chatMediator.addUser(user3);
+
+user2.sendMessage("Привіт, всім!");
