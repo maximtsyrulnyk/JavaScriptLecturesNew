@@ -2163,45 +2163,363 @@
 
 // Programming patterns 2 part
 
-class Comment {
-    constructor(text) {
-        this.text = text;
-    }
+// class Composite {
+//     comments = [];
+//     addComment(comment) {
+//         this.comments.push(comment);
+//     }
 
-    display() {
-        console.log(`- Коментар: ${this.text}`);
+//     removeComment(comment) {
+//         const index = this.comments.indexOf(comment);
+//         if(index !== -1) {
+//             this.comments.splice(index, 1);
+//         }
+//     }
+// }
+
+// class Comment {
+//     constructor(text) {
+//         this.text = text;
+//         this.replies = []; // Array to hold replies to this comment
+//     }
+
+//     addReply(reply) {
+//         this.replies.push(reply);
+//     }
+
+//     display() {
+//         console.log(`- Коментар: ${this.text}`);
+//         for (const reply of this.replies) {
+//             reply.display();
+//         }
+//     }
+// }
+
+// class Video {
+//     comments = [];
+
+//     constructor(title) {
+//         this.title = title;
+//     }
+
+//     addComment(comment) {
+//         this.comments.push(comment);
+//     }
+
+//     display() {
+//         console.log(`Відео: ${this.title}`);
+
+//         for (const comment of this.comments) {
+//             comment.display();
+//         }
+//     }
+// }
+
+// const video = new Video("Навчальне відео");
+// const comment1 = new Comment("Дуже корисне відео");
+// const comment2 = new Comment("Дякую за чудовий матеріал!");
+// const reply = new Comment("Відповідь: Згоден!");
+
+// video.addComment(comment1);
+// video.addComment(comment2);
+// comment1.addReply(reply);
+
+// video.display();
+
+// class Category {
+//     static #categories = {};
+
+//     constructor(name) {
+//         this.name = name;
+//     }
+
+//     static create(name) {
+//         if(!this.#categories[name]) {
+//             this.#categories[name] = new Category(name);
+//         }
+//         return this.#categories[name];
+//     }
+// }
+
+// class Product {
+//     constructor(name, category) {
+//         this.name = name;
+//         this.category = category;
+//     }
+//     display() {
+//         console.log(`Product: ${this.name}, Category: ${this.category.name}`);
+//     }
+// }
+
+// const electronics = Category.create("Electronics");
+// const books = Category.create("Books");
+// const electronics2 = Category.create("Electronics");
+
+// console.log(electronics, books, electronics2);
+// console.log(electronics === electronics2);
+
+// const product1 = new Product("Laptop", electronics);
+// const product2 = new Product("Headphones", electronics);
+// const product3 = new Product("Book Title", books);
+// const product4 = new Product("Smartphone", new Category("Electronics"));
+
+// product1.display();
+// product2.display();
+// product3.display();
+// product4.display();
+
+// console.log(product1.category === product4.category);
+
+// const list = [product1, product2, product3, product4].filter(
+//     (product) =>product.category === Category.create("Electronics"));
+
+// console.log(list);
+
+// class CoffeeMachine {
+//     prepareCoffee() {
+//         this.boilWater();
+//         this.grindCoffeeBeans();
+//         this.#brewCoffee();
+//         this.pourIntoCup();
+//         this.addIngredients();
+//         this.serveCoffee();
+//     }
+
+//     boilWater() {
+//         console.log("Boiling water");
+//     }
+//     grindCoffeeBeans() {
+//         console.log("Grinding coffee beans...");
+//     }
+//     #brewCoffee() {
+//         console.log("Brewing coffee...");
+//     }
+//     pourIntoCup() {
+//         console.log("Pouring coffee into cup....");
+//     }
+//     addIngredients() {
+//         // Цей метод залишається пустим і може бути перевизначений у підкласах
+//     }
+//     serveCoffee() {
+//         console.log("Coffee served!");
+//     }
+// }
+
+// class LatteMachine extends CoffeeMachine {
+//     addIngredients() {
+//         console.log("Adding milk to make a latte...");
+//         // ...........
+//     }
+
+//     // ..........
+// }
+
+// class CapuccinoMachine extends CoffeeMachine {
+//     addIngredients() {
+//         console.log(
+//             "Adding frothed milk and sprinkle of cocoa powder to make a capuccino..."
+//         );
+//     }
+// }
+
+// const latteMachine = new LatteMachine();
+// latteMachine.prepareCoffee();
+
+// const capuccinoMachine = new CapuccinoMachine();
+// capuccinoMachine.prepareCoffee();
+
+// class TextFile {
+//     constructor(name, content) {
+//         this.name = name;
+//         this.content = content;
+//     }
+// }
+
+// class ImageFile{
+//     constructor(name, size) {
+//         this.name = name;
+//         this.size = size;
+//     }
+// }
+
+// class VideoFile {
+//     constructor(name, duration) {
+//         this.name = name;
+//         this.duration = duration;
+//     }
+// }
+
+// class TextEditor {
+//     files = [];
+
+//     addFile(file) {
+//         this.files.push(file);
+//     }
+
+//     readTextFile(file) {
+//         console.log(`Text file: ${file.name}, Size: ${file.content.length} characters`);
+//     }
+
+//     readImageFile(file) {
+//         console.log(`Image file: ${file.name}, Size: ${file.size} KB`);
+//     }
+//     readVideoFile(file) {
+//         console.log(`Video file: ${file.name}, Duration: ${file.duration} minutes`);
+//     }
+
+//     readFiles() {
+//         for(const file of this.files) {
+//             if (file instanceof TextFile) {
+//                 this.readTextFile(file);
+//             } else if (file instanceof ImageFile) {
+//                 this.readImageFile(file);
+//             } else if (file instanceof VideoFile) {
+//                 this.readVideoFile(file);
+//             }
+//         }
+//     }
+// }
+
+// const textEditor = new TextEditor();
+
+// const textFile = new TextFile("document.txt", "Lorem ipsum dolor sit amet.");
+// const imageFile = new ImageFile("image.jpg", 1024);
+// const videoFile = new VideoFile("video.mp4", 60);
+
+// textEditor.addFile(textFile);
+// textEditor.addFile(imageFile);
+// textEditor.addFile(videoFile);
+
+// console.log(textEditor.files);
+
+// Система електронних платежів з власним API
+class ElectronicPaymentSystem {
+    makePayment(amount) {
+        const convertedAmount = this.convertAmount(amount);
+        console.log(`Making electronic payment: $${convertedAmount}`);
+    }
+    convertAmount(amount) {
+        // Логіка конвертації суми платежу
+        return amount * 1.2; // Припустимо, що необхідна конвертація у відсотках
     }
 }
 
-class Video {
-    comments = [];
-
-    constructor(title) {
-        this.title = title;
-    }
-    addComment(comment) {
-        this.comments.push(comment);
-    }
-
-    removeComment(comment) {
-        const index = this.comments.indexOf(comment);
-        if(index !== -1) {
-            this.comments.splice(index, 1);
-        }
-    }
-    display() {
-        console.log(`Відео: ${this.title}`);
-
-        for(const comment of this.comments) {
-            comment.display();
-        }
+class OtherPaymentSystem {
+    submit(amount) {
+        console.log(`Submitting payment request: ${amount}`);
     }
 }
 
-const video = new Video("Навчальне відео");
-video.addComment(new Comment("Дуже корисне відео"));
-video.addComment(new Comment("Дякую за чудовий матеріал!"));
+const electronicPaymentSystem = new ElectronicPaymentSystem();
+electronicPaymentSystem.makePayment(100);
 
-video.comments[0].addComment(new Comment("Відповідь: Згоден!"));
+class PaymentAdapter {
+    constructor(paymentSystem) {
+        this.paymentSystem = paymentSystem;
+    }
+    makePayment(amount) {
+        const convertedAmount = this.convertAmount(amount);
+        this.paymentSystem.submit(convertedAmount);
+    }
+    convertAmount(amount) {
+        return amount * 1.2;
+    }
+}
 
-video.display();
+class Order {
+    constructor(amount) {
+        this.amount = amount;
+
+        if(amount < 100) {
+            this.paymentSystem = new PaymentAdapter(new OtherPaymentSystem());
+        } else {
+            this.paymentSystem = new ElectronicPaymentSystem();
+        }
+    }
+
+    makePayment() {
+        return this.paymentSystem.makePayment(this.amount);
+    }
+}
+
+const order1 = new Order(1000);
+order1.makePayment();
+
+const order2 = new Order(10);
+order2.makePayment();
+
+class ShoppingCart {
+    constructor(discountStrategy) {
+        this.discountStrategy = discountStrategy;
+        this.items = [];
+    }
+    addItem(item) {
+        this.items.push(item);
+    }
+
+    calculateTotalPrice() {
+        const price = this.items.reduce((acc, item) => acc + item.price, 0);
+        
+        return this.discountStrategy.calculateDiscount(price);
+    }
+}
+
+class DiscountStrategy {
+    calculateDiscount(price) {
+        return price; // 10% знижка
+    }
+}
+
+// Стратегія знижки для звичайних клієнтів
+class RegularDiscountStrategy extends DiscountStrategy {
+    calculateDiscount(price) {
+        return price * 1.1; // 10% знижка
+    }
+}
+
+// Стратегія знижки для преміум клієнтів
+class PremiumDiscountStrategy extends DiscountStrategy {
+    calculateDiscount(price) {
+        return price * 1.2; // 20% знижка
+    }
+}
+
+// Стратегія знижки для нових клієнтів
+class NewCustomerDiscountStrategy extends DiscountStrategy{
+    calculateDiscount(price) {
+        return price * 1.05; // 5% знижка
+    }
+}
+
+const shoppingCart1 = new ShoppingCart(new NewCustomerDiscountStrategy());
+
+shoppingCart1.addItem({name: "Product 1", price: 100});
+shoppingCart1.addItem({name: "Product 2", price: 50});
+
+console.log(shoppingCart1.calculateTotalPrice());
+
+class User {
+    constructor(name, email, password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+}
+
+class UsrGroup {
+   users = [];
+
+    addUser(user) {
+        this.users.push(user);
+    }
+}
+
+const group1 = new UserGroup();
+
+group1.addUser(new User("John Doe", "john@example.com", "password1"));
+
+const group2 = new UserGroup();
+
+group2.addUser(new User("Jane Smith", "jane@example.com", "password2"));
+
+console.log(group1, group2);
