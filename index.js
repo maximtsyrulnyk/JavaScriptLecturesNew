@@ -2393,202 +2393,242 @@
 // console.log(textEditor.files);
 
 // Система електронних платежів з власним API
-class ElectronicPaymentSystem {
-    makePayment(amount) {
-        const convertedAmount = this.convertAmount(amount);
-        console.log(`Making electronic payment: $${convertedAmount}`);
-    }
-    convertAmount(amount) {
-        // Логіка конвертації суми платежу
-        return amount * 1.2; // Припустимо, що необхідна конвертація у відсотках
-    }
-}
+// class ElectronicPaymentSystem {
+//     makePayment(amount) {
+//         const convertedAmount = this.convertAmount(amount);
+//         console.log(`Making electronic payment: $${convertedAmount}`);
+//     }
+//     convertAmount(amount) {
+//         // Логіка конвертації суми платежу
+//         return amount * 1.2; // Припустимо, що необхідна конвертація у відсотках
+//     }
+// }
 
-class OtherPaymentSystem {
-    submit(amount) {
-        console.log(`Submitting payment request: ${amount}`);
-    }
-}
+// class OtherPaymentSystem {
+//     submit(amount) {
+//         console.log(`Submitting payment request: ${amount}`);
+//     }
+// }
 
-const electronicPaymentSystem = new ElectronicPaymentSystem();
-electronicPaymentSystem.makePayment(100);
+// const electronicPaymentSystem = new ElectronicPaymentSystem();
+// electronicPaymentSystem.makePayment(100);
 
-class PaymentAdapter {
-    constructor(paymentSystem) {
-        this.paymentSystem = paymentSystem;
-    }
-    makePayment(amount) {
-        const convertedAmount = this.convertAmount(amount);
-        this.paymentSystem.submit(convertedAmount);
-    }
-    convertAmount(amount) {
-        return amount * 1.2;
-    }
-}
+// class PaymentAdapter {
+//     constructor(paymentSystem) {
+//         this.paymentSystem = paymentSystem;
+//     }
+//     makePayment(amount) {
+//         const convertedAmount = this.convertAmount(amount);
+//         this.paymentSystem.submit(convertedAmount);
+//     }
+//     convertAmount(amount) {
+//         return amount * 1.2;
+//     }
+// }
 
-class Order {
-    constructor(amount) {
-        this.amount = amount;
+// class Order {
+//     constructor(amount) {
+//         this.amount = amount;
 
-        if(amount < 100) {
-            this.paymentSystem = new PaymentAdapter(new OtherPaymentSystem());
-        } else {
-            this.paymentSystem = new ElectronicPaymentSystem();
-        }
-    }
+//         if(amount < 100) {
+//             this.paymentSystem = new PaymentAdapter(new OtherPaymentSystem());
+//         } else {
+//             this.paymentSystem = new ElectronicPaymentSystem();
+//         }
+//     }
 
-    makePayment() {
-        return this.paymentSystem.makePayment(this.amount);
-    }
-}
+//     makePayment() {
+//         return this.paymentSystem.makePayment(this.amount);
+//     }
+// }
 
-const order1 = new Order(1000);
-order1.makePayment();
+// const order1 = new Order(1000);
+// order1.makePayment();
 
-const order2 = new Order(10);
-order2.makePayment();
+// const order2 = new Order(10);
+// order2.makePayment();
 
-class ShoppingCart {
-    constructor(discountStrategy) {
-        this.discountStrategy = discountStrategy;
-        this.items = [];
-    }
-    addItem(item) {
-        this.items.push(item);
-    }
+// class ShoppingCart {
+//     constructor(discountStrategy) {
+//         this.discountStrategy = discountStrategy;
+//         this.items = [];
+//     }
+//     addItem(item) {
+//         this.items.push(item);
+//     }
 
-    calculateTotalPrice() {
-        const price = this.items.reduce((acc, item) => acc + item.price, 0);
+//     calculateTotalPrice() {
+//         const price = this.items.reduce((acc, item) => acc + item.price, 0);
         
-        return this.discountStrategy.calculateDiscount(price);
-    }
-}
+//         return this.discountStrategy.calculateDiscount(price);
+//     }
+// }
 
-class DiscountStrategy {
-    calculateDiscount(price) {
-        return price; // 10% знижка
-    }
-}
+// class DiscountStrategy {
+//     calculateDiscount(price) {
+//         return price; // 10% знижка
+//     }
+// }
 
 // Стратегія знижки для звичайних клієнтів
-class RegularDiscountStrategy extends DiscountStrategy {
-    calculateDiscount(price) {
-        return price * 1.1; // 10% знижка
-    }
-}
+// class RegularDiscountStrategy extends DiscountStrategy {
+//     calculateDiscount(price) {
+//         return price * 1.1; // 10% знижка
+//     }
+// }
 
 // Стратегія знижки для преміум клієнтів
-class PremiumDiscountStrategy extends DiscountStrategy {
-    calculateDiscount(price) {
-        return price * 1.2; // 20% знижка
-    }
-}
+// class PremiumDiscountStrategy extends DiscountStrategy {
+//     calculateDiscount(price) {
+//         return price * 1.2; // 20% знижка
+//     }
+// }
 
 // Стратегія знижки для нових клієнтів
-class NewCustomerDiscountStrategy extends DiscountStrategy{
-    calculateDiscount(price) {
-        return price * 1.05; // 5% знижка
-    }
-}
+// class NewCustomerDiscountStrategy extends DiscountStrategy{
+//     calculateDiscount(price) {
+//         return price * 1.05; // 5% знижка
+//     }
+// }
 
-const shoppingCart1 = new ShoppingCart(new NewCustomerDiscountStrategy());
+// const shoppingCart1 = new ShoppingCart(new NewCustomerDiscountStrategy());
 
-shoppingCart1.addItem({name: "Product 1", price: 100});
-shoppingCart1.addItem({name: "Product 2", price: 50});
+// shoppingCart1.addItem({name: "Product 1", price: 100});
+// shoppingCart1.addItem({name: "Product 2", price: 50});
 
-console.log(shoppingCart1.calculateTotalPrice());
+// console.log(shoppingCart1.calculateTotalPrice());
 
-class User {
-    constructor(name, chat) {
-        this.name = name;
-        this.chat = chat;
-    }
-    sendMessage(message) {
-        console.log(`${this.name} відправив повідомлення ${message}`);
-        return this.chat.sendMessage(this, message);
-    }
+// class User {
+//     constructor(name, chat) {
+//         this.name = name;
+//         this.chat = chat;
+//     }
+//     sendMessage(message) {
+//         console.log(`${this.name} відправив повідомлення ${message}`);
+//         return this.chat.sendMessage(this, message);
+//     }
 
-    receiveMessage(user, message) {
-        console.log(`${this.name} отримав повідомлення від ${user.name}: ${message}`);
-    }
-}
+//     receiveMessage(user, message) {
+//         console.log(`${this.name} отримав повідомлення від ${user.name}: ${message}`);
+//     }
+// }
 
-class Chat {
-    constructor() {
-        this.users = [];
-    }
+// class Chat {
+//     constructor() {
+//         this.users = [];
+//     }
 
-    // Додавання користувача до чату
-    addUser(user) {
-        this.users.push(user);
-    }
+//     // Додавання користувача до чату
+//     addUser(user) {
+//         this.users.push(user);
+//     }
 
-    // Відправник повідомлення в чат
-    sendMessage(sender, message) {
-        for (const user of this.users) {
-            if(user !== sender) {
-                user.receiveMessage(sender, message);
-            }
-        }
-    }
-}
+//     // Відправник повідомлення в чат
+//     sendMessage(sender, message) {
+//         for (const user of this.users) {
+//             if(user !== sender) {
+//                 user.receiveMessage(sender, message);
+//             }
+//         }
+//     }
+// }
 
-class UserGroup {
-   users = [];
+// class UserGroup {
+//    users = [];
 
-    addUser(user) {
-        this.users.push(user);
-    }
-}
+//     addUser(user) {
+//         this.users.push(user);
+//     }
+// }
 
-class UserIterator {
-    #users = null;
-    #currentIndex = 0;
-    constructor(userGroup) {
-        this.#users = userGroup.users;
-    }
+// class UserIterator {
+//     #users = null;
+//     #currentIndex = 0;
+//     constructor(userGroup) {
+//         this.#users = userGroup.users;
+//     }
 
-    #hasNext() {
-        return this.#currentIndex < this.#users.length;
-    }
+//     #hasNext() {
+//         return this.#currentIndex < this.#users.length;
+//     }
 
     // Метод, який повертає наступний елемент
-    next() {
-        if(this.#hasNext()) {
-            const name = this.#users[this.#currentIndex].name;
-            this.#currentIndex++;
-            return name;
-        }
-        return null;
-    }
-    list() {
-        return this.#users.map((user) => user.name).join(", ")
-    }
-}
+//     next() {
+//         if(this.#hasNext()) {
+//             const name = this.#users[this.#currentIndex].name;
+//             this.#currentIndex++;
+//             return name;
+//         }
+//         return null;
+//     }
+//     list() {
+//         return this.#users.map((user) => user.name).join(", ")
+//     }
+// }
 
-const group = new UserGroup();
+// const group = new UserGroup();
 
-group.addUser(new User("John Doe", "john@example.com", "password1"));
+// group.addUser(new User("John Doe", "john@example.com", "password1"));
 
-group.addUser(new User("Jane Smith", "jane@example.com", "password2"));
+// group.addUser(new User("Jane Smith", "jane@example.com", "password2"));
 
-console.log(group.users.map((user) => user.name).join(", "));
+// console.log(group.users.map((user) => user.name).join(", "));
 
-const iterator = new UserIterator(group);
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
+// const iterator = new UserIterator(group);
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
 
-console.log(iterator.list());
+// console.log(iterator.list());
 
-const chatMediator = new Chat();
+// const chatMediator = new Chat();
 
-const user1 = new User("John", chatMediator);
-const user2 = new User("Jane", chatMediator);
-const user3 = new User("Mike", chatMediator);
+// const user1 = new User("John", chatMediator);
+// const user2 = new User("Jane", chatMediator);
+// const user3 = new User("Mike", chatMediator);
 
-chatMediator.addUser(user1);
-chatMediator.addUser(user2);
-chatMediator.addUser(user3);
+// chatMediator.addUser(user1);
+// chatMediator.addUser(user2);
+// chatMediator.addUser(user3);
 
-user2.sendMessage("Привіт, всім!");
+// user2.sendMessage("Привіт, всім!");
+
+// Cycle of events
+// function consoleLog() {
+//     const test = "hello world";
+
+//     console.log('4');
+//     console.log('5');
+//     console.log('6');
+
+//     return consoleLog();
+// }
+
+// // console.log(test);
+
+// console.log('1');
+// console.log('2');
+// console.log('3');
+
+// consoleLog();
+
+// for(let i = 0;i < 10000; i++) {
+//     console.log(i);
+// }
+const immediateId = setImmediate(() => {
+    console.log('Перший');
+}, 0);
+const intervalId = setInterval(() => {
+    console.log("п'ятий");
+}, 1000);
+
+const timeoutId = setTimeout(() => {
+    console.log('Другий');
+    clearInterval(intervalId);  
+}, 5000);
+
+console.log('Третій');
+console.log('Четвертий');
+
+clearImmediate(immediateId);
+clearTimeout(timeoutId);
