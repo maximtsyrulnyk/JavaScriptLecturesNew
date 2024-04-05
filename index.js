@@ -2615,20 +2615,24 @@
 // for(let i = 0;i < 10000; i++) {
 //     console.log(i);
 // }
-const immediateId = setImmediate(() => {
-    console.log('Перший');
-}, 0);
-const intervalId = setInterval(() => {
-    console.log("п'ятий");
-}, 1000);
+// const immediateId = setImmediate(() => {
+//     console.log('Перший');
+// }, 0);
+// const intervalId = setInterval(() => {
+//     console.log("п'ятий");
+// }, 1000);
 
-const timeoutId = setTimeout(() => {
-    console.log('Другий');
-    clearInterval(intervalId);  
-}, 5000);
+// const timeoutId = setTimeout(() => {
+//     console.log('Другий');
+//     clearInterval(intervalId);  
+// }, 5000);
 
-console.log('Третій');
-console.log('Четвертий');
+// console.log('Третій');
+// console.log('Четвертий');
 
-clearImmediate(immediateId);
-clearTimeout(timeoutId);
+// clearImmediate(immediateId);
+// clearTimeout(timeoutId);
+
+console.log('1');
+setTimeout(function() { console.log('2'); }, 0);
+console.log('3');
