@@ -2638,14 +2638,14 @@
 // console.log('3');
 
 // Management of asynchronous operations
-// function loadFile(filename, callback) {
-//     try {
-//         console.log(`Завантаження файлу ${filename}....`);
-//         setTimeout(() => callback(null, `Вміст файлу ${filename}`), 2000);
-//     } catch(e) {
-//         callback(e);
-//     }
-// }
+function loadFile(filename, callback) {
+    try {
+        console.log(`Завантаження файлу ${filename}....`);
+        setTimeout(() => callback(null, `Вміст файлу ${filename}`), 2000);
+    } catch(e) {
+        callback(e);
+    }
+}
 
 function convertFile(content, callback) {
     setTimeout(function() {
@@ -2654,91 +2654,90 @@ function convertFile(content, callback) {
     }, 1000);
 }
 
-// function saveFile(convertedContent, callback) {
-//     setTimeout(function() {
-//         // Збереження файлу...
-//         callback();
-//     }, 1500);
-// }
+function saveFile(convertedContent) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, 1500);
+    });
+}
 
-// function sendFileToClient(callback) {
-//     setTimeout(function () {
-//         // Відправка даних в інтерфейс
-//         callback();
-//     }, 500);
-// }
+function sendFileToClient() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, 500)
+    });
+}
 
-// // ===========
+function getInfoFromFile(file) {
+    console.log(file);
 
-// loadFile("example.txt", (error, content) =>  {
-//     if(error) {
-//         console.error("Помилка завантаження файлу:", error);
-//     } else {
-//         console.log("Файл завантажено успішно!");
-//         console.log("Вміст файлу:", content);
+    return Promise.resolve(file);
+}
 
-//         convertFile(content, (error, convertedContent) => {
-//             if(error) {
-//                 console.error("Помилка конвертації файлу:", error);
-//             } else {
-//                 console.log("Файл успішно сконвертовано!");
-//                 console.log("Конвертований вміст:", convertedContent);
+loadFile("example.txt")
+    .then((content) => {
+        console.log("Файл завантажено успішно");
+        console.log("Вміст файлу: ", content);
+        return convertFile(content);
+    })
+    .then((data) => {
+        return getInfoFromFile(data);
+    })
+    .then((convertedContent) => {
+        console.log("Файл успішно сконвертовано");
+        console.log("Конвертований вміст: ", convertedContent);
+        return saveFile(convertedContent);
+    })
+    .then(() => {
+        console.log("Файл успішно збережено");
+        return sendFileToClient();
+    })
 
-//                 saveFile(convertedContent, (error) => {
-//                     if(error) {
-//                         console.error("Помилка збереження файлу:", error);
-//                     } else {
-//                         console.log("Файл успішно збережено!");
+    .catch((error) => {
+        console.error("Сталася помилка:", error);
+    })
+    .finally(() => {
+        console.log("Файл успішно відправлено клієнту");
+    });
 
-//                         sendFileToClient((error) => {
-//                             if(error) {
-//                                 console.error("Помилка відправлення файлу клієнту:", error);
-//                             } else {
-//                                 console.log("Файл успішно відправлено клієнту");
-//                             }
-//                         });
-//                     }
-//                 });
-//             }
-//         });
-//     }
+// const loadFile = (filename) => 
+//     new Promise((resolve, reject)=>{
+//         console.log(`Завантаження файлу ${filename}...`);
+//          // Simulating an error condition
+//          if (filename !== "image.png" && filename !== "photo.jpg") {
+//             reject("Invalid file");
+//         } else {
+//             setTimeout(() => resolve(`Вміст файлу ${filename}`), 2000);
+//         }
 // });
-
-
-const loadFile = (filename) => 
-    new Promise((resolve, reject)=>{
-        console.log(`Завантаження файлу ${filename}...`);
-        
-        reject("Error");
-        
-        setTimeout(() => resolve(`Вміст файлу ${filename}`), 2000);
-});
 
 // =============
 
-loadFile("image.png").then((data) => {
-    return data.toUpperCase();
-}).then((data) => {
-    console.log(data);
-}).catch((error) => {
-    console.log("Error", error);
-}).finally(() => {
-    console.log("End");
-});
+// loadFile("image.png").then((data) => {
+//     return data.toUpperCase();
+// }).then((data) => {
+//     console.log(data);
+// }).catch((error) => {
+//     console.log("Error", error);
+// }).finally(() => {
+//     console.log("End");
+// });
 
-const result = loadFile("photo.jpg");
+// const result = loadFile("photo.jpg");
 
-result.then((data) => {
-    console.log(data, 1);
-    return null;
-});
+// result.then((data) => {
+//     console.log(data, 1);
+//     return null;
+// });
 
-result.then((data) => {
-    console.log(data, 2);
-    return null;
-});
+// result.then((data) => {
+//     console.log(data, 2);
+//     return null;
+// });
 
-result.then((data) => {
-    console.log(data, 3);
-    return null;
-});
+// result.then((data) => {
+//     console.log(data, 3);
+//     return null;
+// });
