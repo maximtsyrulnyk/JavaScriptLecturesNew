@@ -2719,7 +2719,7 @@
 //         console.log("Файл успішно відправлено клієнту");
 //     });
 
-// const loadFile = (filename) => 
+// loadFile = (filename) => 
 //     new Promise((resolve, reject)=>{
 //         console.log(`Завантаження файлу ${filename}...`);
 //          // Simulating an error condition
@@ -2729,8 +2729,6 @@
 //             setTimeout(() => resolve(`Вміст файлу ${filename}`), 2000);
 //         }
 // });
-
-// =============
 
 // loadFile("image.png").then((data) => {
 //     return data.toUpperCase();
@@ -2795,7 +2793,7 @@
 //     .then((data) => sendFileToData(data))
 //     .finally(() => console.log('Файл відправлено')); 
 
-// const loadAndSendFile = async() => {
+// loadAndSendFile = async() => {
 //         const data = await loadFile();
 //         await sendFileToData(data);
 //         console.log("end send file");
@@ -2840,28 +2838,58 @@
 // getData();
 
 // Functions-Generators
-async function performFile(path) {
-    const content = await loadFile(path);
+// async function performFile(path) {
+//     const content = await loadFile(path);
 
-    //
+//     //
 
-   return [
-        async() => {
-            const data = await convertFile(content);
+//    return [
+//     async () => {
+//             const data = await convertFile(content);
 
-            return [
-                async () => {
-                    const convertedContent = await getInfoFromFile(data);
+//             return [
+//                 async () => {
+//                     const convertedContent = await getInfoFromFile(data);
 
-                    await saveFile(convertedContent);
+//                     await saveFile(convertedContent);
 
-                    await sendFileToClient();
-                },
-                data,
-            ];
-        },
-        content,
-   ];
+//                     await sendFileToClient();
+//                 },
+//                 data,
+//             ];
+//         },
+//         content,
+//    ];
+// }
+
+// async function main() {
+//     const [next, content] = await performFile("file.png");
+
+//     console.log(next, content);
+
+//     ////..........
+//     //........
+
+//     await next();
+// }
+
+// performFile("file.png").then(([next, content]) => console.log((next, content)));
+main();
+
+function myGenerator() {
+    console.log("Start");
+
+    yield 1;
+
+    yield 2;
+
+    yield 3;
+
+    console.log("End");
 }
 
-performFile("file.png").then(([next, content]) => console.log((next, content)));
+const generator = myGenerator();
+
+const result1 = generator.next();
+
+console.log(generator);
