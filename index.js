@@ -2638,59 +2638,59 @@
 // console.log('3');
 
 // Management of asynchronous operations
-function loadFile(filename) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // console.log("2222");
-            resolve(`Вміст файлу ${filename}`);
-        }, 2000);
-    });
-}
+// function loadFile(filename) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             // console.log("2222");
+//             resolve(`Вміст файлу ${filename}`);
+//         }, 2000);
+//     });
+// }
 
-function convertFile(content) {
-    return new Promise((resolve, reject) => {
-        setTimeout(function() {
-            // Конвертація файлу....
-            resolve(`Конвертований вміст: ${content.toUpperCase()}`);
-        }, 1000);
-    });
-}
+// function convertFile(content) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(function() {
+//             // Конвертація файлу....
+//             resolve(`Конвертований вміст: ${content.toUpperCase()}`);
+//         }, 1000);
+//     });
+// }
 
-function saveFile(convertedContent) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // console.log('saveFile');
-            reject("Error test");
-        }, 1500);
-    });
-}
+// function saveFile(convertedContent) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             // console.log('saveFile');
+//             reject("Error test");
+//         }, 1500);
+//     });
+// }
 
-function sendFileToClient() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // console.log('sendFileToClient');
-            reject("Error test 2");
-        }, 5000);
-    });
-}
+// function sendFileToClient() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             // console.log('sendFileToClient');
+//             reject("Error test 2");
+//         }, 5000);
+//     });
+// }
 
-function getInfoFromFile(file) {
-    // console.log(file, 1111);
+// function getInfoFromFile(file) {
+//     // console.log(file, 1111);
 
-    return Promise.resolve(file + 100);
-}
+//     return Promise.resolve(file + 100);
+// }
 
-const test = Promise.race([
-    loadFile("example.txt"), 
-    // getInfoFromFile("example.txt"), 
-    saveFile(), 
-    sendFileToClient(), 
-    convertFile('file'),
-]).then((data) => {
-    console.log('Data', data);
-}).catch((error) => {
-    console.log('Error!', error);
-});
+// const test = Promise.race([
+//     loadFile("example.txt"), 
+//     // getInfoFromFile("example.txt"), 
+//     saveFile(), 
+//     sendFileToClient(), 
+//     convertFile('file'),
+// ]).then((data) => {
+//     console.log('Data', data);
+// }).catch((error) => {
+//     console.log('Error!', error);
+// });
 
 // console.log(test);
 // loadFile("example.txt")
@@ -2758,3 +2758,83 @@ const test = Promise.race([
 //     console.log(data, 3);
 //     return null;
 // });
+
+// Робота з Promise та HTTP запити
+
+// function MyFunction() {
+//     loadFile("example.txt")
+//     .then((content) => {
+        
+
+//         // .........
+
+//         // .........
+
+//         //
+
+//         return convertFile(content);
+//     })
+//     .then((data) => {
+//         return getInfoFromFile(data);
+//     })
+// }
+
+// function loadFile() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve("Дані файлу"), 2000);
+//     });
+// }
+
+// function sendFileToData(fileData) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve(true), 1500);
+//     });
+// }
+
+// const loadAndSendFile = () =>  loadFile()
+//     .then((data) => sendFileToData(data))
+//     .finally(() => console.log('Файл відправлено')); 
+
+// const loadAndSendFile = async() => {
+//         const data = await loadFile();
+//         await sendFileToData(data);
+//         console.log("end send file");
+// };
+
+// loadAndSendFile().then(() => {console.log("End");});
+
+// console.log(new Date().getTime());
+// const request = new Request('url', {method: 'DELETE'});
+
+// fetch(request);
+
+// const data = {
+//     id: 1,
+//     name: 'User',
+//     age: 50,
+// };
+
+
+async function getData() {
+const res = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
+    method: 'GET',
+    // body: JSON.stringify(data),
+
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer your_token",
+    },
+});
+
+console.log(res.bodyUsed);
+
+const data = await res.json();
+
+console.log(res.bodyUsed);
+
+console.log(data);
+
+console.log(res.ok);
+
+}
+getData();
