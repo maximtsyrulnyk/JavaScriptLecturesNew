@@ -2864,4 +2864,4 @@ async function performFile(path) {
    ];
 }
 
-performFile('file.png').then(([next, content]) => console.log((next, content)));
+performFile("file.png").then(([next, content]) => console.log((next, content)));
