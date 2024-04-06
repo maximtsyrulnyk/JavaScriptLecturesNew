@@ -2815,26 +2815,53 @@
 // };
 
 
-async function getData() {
-const res = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
-    method: 'GET',
-    // body: JSON.stringify(data),
+// async function getData() {
+// const res = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
+//     method: 'GET',
+//     // body: JSON.stringify(data),
 
-    headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer your_token",
-    },
-});
+//     headers: {
+//         "Content-Type": "application/json",
+//         Authorization: "Bearer your_token",
+//     },
+// });
 
-console.log(res.bodyUsed);
+// console.log(res.bodyUsed);
 
-const data = await res.json();
+// const data = await res.json();
 
-console.log(res.bodyUsed);
+// console.log(res.bodyUsed);
 
-console.log(data);
+// console.log(data);
 
-console.log(res.ok);
+// console.log(res.ok);
 
+// }
+// getData();
+
+// Functions-Generators
+async function performFile(path) {
+    const content = await loadFile(path);
+
+    //
+
+   return [
+        async() => {
+            const data = await convertFile(content);
+
+            return [
+                async () => {
+                    const convertedContent = await getInfoFromFile(data);
+
+                    await saveFile(convertedContent);
+
+                    await sendFileToClient();
+                },
+                data,
+            ];
+        },
+        content,
+   ];
 }
-getData();
+
+performFile('file.png').then(([next, content]) => console.log((next, content)));
