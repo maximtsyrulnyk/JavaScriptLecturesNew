@@ -2777,11 +2777,11 @@
 //     })
 // }
 
-// function loadFile() {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => resolve("Дані файлу"), 2000);
-//     });
-// }
+function loadFile() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Дані файлу"), 2000);
+    });
+}
 
 // function sendFileToData(fileData) {
 //     return new Promise((resolve, reject) => {
