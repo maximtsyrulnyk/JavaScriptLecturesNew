@@ -2638,14 +2638,14 @@
 // console.log('3');
 
 // Management of asynchronous operations
-function loadFile(filename) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // console.log("2222");
-            resolve(`Вміст файлу ${filename}`);
-        }, 2000);
-    });
-}
+// function loadFile(filename) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             // console.log("2222");
+//             resolve(`Вміст файлу ${filename}`);
+//         }, 2000);
+//     });
+// }
 
 // function convertFile(content) {
 //     return new Promise((resolve, reject) => {
@@ -2777,11 +2777,11 @@ function loadFile(filename) {
 //     })
 // }
 
-function loadFile() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Дані файлу"), 2000);
-    });
-}
+// function loadFile() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve("Дані файлу"), 2000);
+//     });
+// }
 
 // function sendFileToData(fileData) {
 //     return new Promise((resolve, reject) => {
@@ -2874,7 +2874,7 @@ function loadFile() {
 // }
 
 // performFile("file.png").then(([next, content]) => console.log((next, content)));
-main();
+// main();
 
 function myGenerator() {
     console.log("Start");
