@@ -2638,14 +2638,14 @@
 // console.log('3');
 
 // Management of asynchronous operations
-// function loadFile(filename) {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             // console.log("2222");
-//             resolve(`Вміст файлу ${filename}`);
-//         }, 2000);
-//     });
-// }
+function loadFile(filename) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // console.log("2222");
+            resolve(`Вміст файлу ${filename}`);
+        }, 2000);
+    });
+}
 
 // function convertFile(content) {
 //     return new Promise((resolve, reject) => {
