@@ -2777,11 +2777,11 @@
 //     })
 // }
 
-function loadFile() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Дані файлу"), 2000);
-    });
-}
+// function loadFile() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve("Дані файлу"), 2000);
+//     });
+// }
 
 // function sendFileToData(fileData) {
 //     return new Promise((resolve, reject) => {
@@ -2876,20 +2876,169 @@ function loadFile() {
 // performFile("file.png").then(([next, content]) => console.log((next, content)));
 // main();
 
-function myGenerator() {
-    console.log("Start");
+// function* myGenerator() {
+//     console.log("Start");
 
-    yield 1;
+//     yield 1;
 
-    yield 2;
+//     console.log("Start 2");
 
-    yield 3;
+//     yield 2;
 
-    console.log("End");
+//     console.log("Start 3");
+
+//     yield 3;
+
+//     console.log("End");
+
+//     return 4;
+// }
+
+// const generator = myGenerator();
+
+// const result1 = generator.next();
+
+// console.log(result1);
+
+// const result2 = generator.next();
+
+// console.log(result2);
+
+// const result3 = generator.next();
+
+// console.log(result3);
+
+// const result4 = generator.next();
+
+// console.log(result4);
+
+// function* processOrder(order) {
+//     yield validateOrder(order);
+//     yield processPayment(order);
+//     yield sendOrderConfirmation(order);
+
+//     return order;
+// }
+
+// function validateOrder(order) {
+//     const isValid = order.quantity > 0;
+//     return isValid;
+// }
+
+// function processPayment(order) {
+//     const isPaymentSuccessful = Math.random() < 0.5;
+//     return isPaymentSuccessful;
+// }
+
+// function sendOrderConfirmation() {
+//     const isConfirmationSent = true;
+//     return isConfirmationSent;
+// }
+
+// const order = {id: 123, product: "Товар", quantity: 2};
+
+// const orderProcessing = processOrder(order);
+
+// const isValidateOrder = orderProcessing.next().value;
+
+// if(isValidateOrder === false) {
+//     // ...
+// }
+
+// ======
+
+// const isProcessPayment = orderProcessing.next();
+
+// if(isProcessPayment === false) {
+    
+// }
+
+// console.log(orderProcessing.next());
+// console.log(orderProcessing.next());
+// console.log(orderProcessing.next());
+
+// function* generatorFunction() {
+//     yield "First value";
+//     yield "Second value";
+//     return 3;
+// }
+
+// const generator = generatorFunction();
+
+// for(let value of generator) {
+//     console.log(value);
+// }
+
+// function* generartorOne() {
+//     yield "1 1";
+//     yield "1 2";
+//     return "1 3";
+// }
+
+// function* generartorTwo() {
+//     yield* generartorOne();
+//     yield "2 1";
+//     yield "2 2";
+// }
+
+// const generator = generartorTwo();
+
+// console.log(generator.next());
+// console.log(generator.next());
+// console.log(generator.next());
+// console.log(generator.next());
+
+// function* myGenerator() {
+// try {    
+//     //
+//     //
+//     const test = yield 1;
+//     //
+//     //
+//     // console.log('test', test);
+//     const value = yield 2;
+//     //
+//     //
+//     yield 3;
+//     yield value;
+//     } catch(e) {
+//         // console.log(e);
+
+//         yield 1000;
+//     } finally {
+//         yield 2000;
+//     }
+
+//     yield 3000;
+
+//     yield 4000;
+// }
+// const generator = myGenerator();
+
+// console.log(generator.next().value);
+// console.log(generator.throw(new Error()));
+// console.log(generator.next(4).value);
+// console.log(generator.next(4).value);
+// console.log(generator.next().value);
+//
+//
+
+const asyncFunc = () => new Promise((resolve) => setTimeout(resolve, 1000));
+
+async function* asyncGenerator() {
+    await asyncFunc();
+    yield "After 1 second";
+    await asyncFunc();
+    yield "After 2 second";
 }
 
-const generator = myGenerator();
+async function runGenerator() {
+    const generator = asyncGenerator();
 
-const result1 = generator.next();
+    for await (const result of generator) {
+        console.log(result);
 
-console.log(generator);
+        await asyncFunc();
+    }
+}
+runGenerator();
